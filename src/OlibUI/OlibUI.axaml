@@ -1,0 +1,76 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+	<Styles.Resources>
+		<SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource BackgroundColor}"/>
+		<SolidColorBrush x:Key="HoverBackgroundBrush" Color="{DynamicResource HoverBackgroundColor}"/>
+		<SolidColorBrush x:Key="ForegroundBrush" Color="{DynamicResource ForegroundColor}"/>
+		<SolidColorBrush x:Key="ForegroundOpacityBrush" Color="{DynamicResource ForegroundOpacityColor}"/>
+		<SolidColorBrush x:Key="PressedForegroundBrush" Color="{DynamicResource PressedForegroundColor}"/>
+		<SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
+		<SolidColorBrush x:Key="BorderBackgroundBrush" Color="{DynamicResource BorderBackgroundColor}"/>
+		<SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}"/>
+		<SolidColorBrush x:Key="WindowBorderBrush" Color="{DynamicResource WindowBorderColor}"/>
+		<SolidColorBrush x:Key="HoverScrollBoxBrush" Color="{DynamicResource HoverScrollBoxColor}"/>
+		<SolidColorBrush x:Key="ScrollBoxBrush" Color="{DynamicResource ScrollBoxColor}"/>
+		<SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
+		<SolidColorBrush x:Key="WindowBorderBackgroundBrush" Color="{DynamicResource WindowBorderBackgroundColor}"/>
+	</Styles.Resources>
+	
+	<!-- Windows -->
+	<StyleInclude Source="/Windows/OlibWindow.axaml"/>
+	<!-- Windows -->
+	
+	<!-- Controls -->
+	<StyleInclude Source="/Controls/Button.axaml"/>
+	<StyleInclude Source="/Controls/Menu.axaml"/>
+	<StyleInclude Source="/Controls/PopupRoot.axaml"/>
+	<StyleInclude Source="/Controls/ContextMenu.axaml"/>
+	<StyleInclude Source="/Controls/ScrollViewer.axaml"/>
+	<StyleInclude Source="/Controls/ContentControl.axaml"/>
+	<StyleInclude Source="/Controls/ToolTip.axaml"/>
+	<StyleInclude Source="/Controls/ProgressBar.axaml"/>
+	<StyleInclude Source="/Controls/Separator.axaml"/>
+	<StyleInclude Source="/Controls/CheckBox.axaml"/>
+	<StyleInclude Source="/Controls/ComboBox.axaml"/>
+	<StyleInclude Source="/Controls/RepeatButton.axaml"/>
+	<StyleInclude Source="/Controls/ScrollBar.axaml"/>
+	<StyleInclude Source="/Controls/MenuItem.axaml"/>
+	<StyleInclude Source="/Controls/ComboBoxItem.axaml"/>
+	<StyleInclude Source="/Controls/ListBox.axaml"/>
+	<StyleInclude Source="/Controls/ListBoxItem.axaml"/>
+	<StyleInclude Source="/Controls/TextBox.axaml"/>
+	<StyleInclude Source="/Controls/ToggleButton.axaml"/>
+	<StyleInclude Source="/Controls/DataValidationErrors.axaml"/>
+	<StyleInclude Source="/Controls/TabControl.axaml"/>
+	<StyleInclude Source="/Controls/TabItem.axaml"/>
+	<StyleInclude Source="/Controls/UserControl.axaml"/>
+	<StyleInclude Source="/Controls/GridSplitter.axaml"/>
+	<StyleInclude Source="/Controls/ButtonSpinner.axaml"/>
+	<StyleInclude Source="/Controls/NumericUpDown.axaml"/>
+	<!-- Controls -->
+	
+	<!-- Instruments -->
+	<StyleInclude Source="/Instruments/ColorPicker.axaml"/>
+	<!-- Instruments -->
+
+	<Style Selector="Border.BorderStyle">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+		<Setter Property="CornerRadius" Value="5"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+	</Style>
+
+	<Style Selector="Separator">
+		<Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="Height" Value="1"/>
+		<Setter Property="Margin" Value="15 5"/>
+	</Style>
+
+	<Style Selector="Border.Panel">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+	</Style>
+</Styles>

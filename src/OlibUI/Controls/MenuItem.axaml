@@ -1,0 +1,177 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:conv="using:Avalonia.Controls.Converters"
+        xmlns:sys="using:System">
+	<Design.PreviewWith>
+		<Menu Margin="10 10 10 50">
+			<MenuItem Header="MenuItem 1">
+				<MenuItem Header="SubMenu 1"/>
+			</MenuItem>
+			<MenuItem Header="MenuItem 2"/>
+		</Menu>
+	</Design.PreviewWith>
+
+	<Styles.Resources>
+		<conv:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
+	</Styles.Resources>
+
+	<Style Selector="MenuItem">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+		<Setter Property="FontSize" Value="12" />
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel>
+					<Border Name="PART_LayoutRoot"
+							Background="{TemplateBinding Background}"
+							BorderBrush="{TemplateBinding BorderBrush}"
+							Padding="5 4"
+							BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"
+												  SharedSizeGroup="MenuItemIcon" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto"
+												  SharedSizeGroup="MenuItemIGT" />
+								<ColumnDefinition Width="Auto"
+												  SharedSizeGroup="MenuItemChevron" />
+							</Grid.ColumnDefinitions>
+							<ContentPresenter Name="PART_IconPresenter"
+											  Content="{TemplateBinding Icon}"
+											  Width="16"
+											  Height="16"
+											  Margin="0 0 12 0"
+											  HorizontalAlignment="Center"
+											  VerticalAlignment="Center" />
+
+							<ContentPresenter Name="PART_HeaderPresenter"
+											  Content="{TemplateBinding Header}"
+											  VerticalAlignment="Center"
+											  HorizontalAlignment="Stretch"
+											  Grid.Column="1">
+								<ContentPresenter.DataTemplates>
+									<DataTemplate DataType="sys:String">
+										<AccessText Text="{Binding}" />
+									</DataTemplate>
+								</ContentPresenter.DataTemplates>
+							</ContentPresenter>
+							<TextBlock x:Name="PART_InputGestureText"
+									   Grid.Column="2"
+									   Classes="CaptionTextBlockStyle"
+									   Margin="24 0 15 0"
+									   Text="{TemplateBinding InputGesture, Converter={StaticResource KeyGestureConverter}}"
+									   HorizontalAlignment="Right"
+									   VerticalAlignment="Center" />
+							<Path Name="PART_ChevronPath"
+								  Stretch="Uniform"
+								  Width="8"
+								  Height="8"
+								  Data="M 1,0 10,10 l -9,10 -1,-1 L 8,10 -0,1 Z"
+								  Margin="0 4 0 4"
+								  VerticalAlignment="Center"
+								  Grid.Column="3" />
+						</Grid>
+					</Border>
+					<Popup Name="PART_Popup"
+						   WindowManagerAddShadowHint="False"
+						   PlacementMode="Right"
+						   OverlayInputPassThroughElement="{Binding $parent[MenuItem]}"
+						   HorizontalOffset="{DynamicResource MenuFlyoutSubItemPopupHorizontalOffset}"
+						   IsLightDismissEnabled="True"
+						   IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
+						<Border Background="{DynamicResource BackgroundBrush}"
+								BorderBrush="{DynamicResource BorderBrush}"
+								BorderThickness="1"
+								Padding="2"
+								MaxWidth="{DynamicResource FlyoutThemeMaxWidth}"
+								MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"
+								HorizontalAlignment="Stretch">
+							<ScrollViewer Classes="menuscroller">
+								<ItemsPresenter Name="PART_ItemsPresenter"
+												Items="{TemplateBinding Items}"
+												ItemsPanel="{TemplateBinding ItemsPanel}"
+												ItemTemplate="{TemplateBinding ItemTemplate}"
+												Margin="{DynamicResource MenuFlyoutScrollerMargin}"
+												Grid.IsSharedSizeScope="True" />
+							</ScrollViewer>
+						</Border>
+					</Popup>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="Menu > MenuItem">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_LayoutRoot"
+						Background="{TemplateBinding Background}"
+						Padding="10 0"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}">
+					<Panel>
+						<ContentPresenter Name="PART_HeaderPresenter"
+										  Content="{TemplateBinding Header}"
+										  VerticalAlignment="Center"
+										  HorizontalAlignment="Stretch"
+										  Margin="{TemplateBinding Padding}">
+							<ContentPresenter.DataTemplates>
+								<DataTemplate DataType="sys:String">
+									<AccessText Text="{Binding}" />
+								</DataTemplate>
+							</ContentPresenter.DataTemplates>
+						</ContentPresenter>
+						<Popup Name="PART_Popup"
+							   WindowManagerAddShadowHint="False"
+							   MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+							   IsLightDismissEnabled="True"
+							   IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
+							   OverlayInputPassThroughElement="{Binding $parent[Menu]}">
+							<Border Background="{DynamicResource BackgroundBrush}"
+									BorderBrush="{DynamicResource BorderBrush}"
+									BorderThickness="1"
+									Padding="2"
+									HorizontalAlignment="Stretch">
+								<ScrollViewer Classes="menuscroller">
+									<ItemsPresenter Name="PART_ItemsPresenter"
+													Items="{TemplateBinding Items}"
+													ItemsPanel="{TemplateBinding ItemsPanel}"
+													ItemTemplate="{TemplateBinding ItemTemplate}"
+													Grid.IsSharedSizeScope="True" />
+								</ScrollViewer>
+							</Border>
+						</Popup>
+					</Panel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="MenuItem /template/ TextBlock#PART_InputGestureText">
+		<Setter Property="Opacity" Value="0.7" />
+	</Style>
+	<Style Selector="MenuItem /template/ Path#PART_ChevronPath">
+		<Setter Property="Fill" Value="{DynamicResource ForegroundBrush}" />
+	</Style>
+
+	<Style Selector="MenuItem:selected /template/ Border#PART_LayoutRoot">
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}" />
+	</Style>
+	
+	<Style Selector="MenuItem:disabled /template/ ContentPresenter">
+		<Setter Property="Opacity" Value="0.5" />
+	</Style>
+
+	<Style Selector="MenuItem:empty /template/ Path#PART_ChevronPath">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+
+	<Style Selector="MenuItem:separator">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Separator />
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>

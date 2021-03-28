@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Version>2.0.0</Version>
+		<Authors>Dmitry Zhutkov (Onebeld)</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Copyright>©2020-2021 Dmitry Zhutkov (Onebeld)</Copyright>
+		<RepositoryType>public</RepositoryType>
+		<PackageTags>style, olib, olibui, avalonia, ui, avaloniaui</PackageTags>
+		<Description>Dynamic user interface for Avalonia</Description>
+		<PackageProjectUrl></PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Onebeld/OlibUI</RepositoryUrl>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageIcon>OlibUI_icon.png</PackageIcon>
+		<PackageIconUrl />
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="0.10.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<AvaloniaResource Include="Themes\**" />
+		<AvaloniaResource Include="Controls\**" />
+		<AvaloniaResource Include="Instruments\**" />
+		<AvaloniaResource Include="Windows\OlibWindow.axaml" />
+		<AvaloniaResource Include="Local\**" />
+		<AvaloniaResource Include="OlibUI.axaml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\LICENSE.md">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	  <None Include="OlibUI_icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	</ItemGroup>
+</Project>

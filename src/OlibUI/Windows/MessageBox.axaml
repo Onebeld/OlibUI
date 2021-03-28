@@ -1,0 +1,27 @@
+<olib:OlibWindow xmlns="https://github.com/avaloniaui"
+				 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				 xmlns:olib="using:OlibUI.Windows"
+				 mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="150"
+				 MinWidth="350"
+				 MinHeight="100"
+				 Width="350" Height="100"
+				 WindowStartupLocation="CenterOwner"
+				 TransparencyLevelHint="AcrylicBlur"
+				 ShowInTaskbar="False"
+				 x:Class="OlibUI.Windows.MessageBox"
+				 SizeToContent="WidthAndHeight" CanResize="False">
+	<Grid Name="ContentC" RowDefinitions="*,Auto">
+		<Grid Name="Content" ColumnDefinitions="70,*">
+			<Path Name="Icon" Fill="{StaticResource ForegroundBrush}" VerticalAlignment="Center" Stretch="Uniform" Width="40" Margin="10"/>
+			<ScrollViewer Grid.Column="1">
+				<TextBlock VerticalAlignment="Center" Name="Text" TextWrapping="Wrap" Margin="0 0 10 0" Width="250"/>
+			</ScrollViewer>
+		</Grid>
+		<TextBox Name="ErrorText" Height="100" MaxWidth="450" Grid.Row="1" Margin="10" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
+	</Grid>
+	<olib:OlibWindow.BottomPanel>
+		<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Name="Buttons" Spacing="5"/>
+	</olib:OlibWindow.BottomPanel>
+</olib:OlibWindow>

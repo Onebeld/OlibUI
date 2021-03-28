@@ -1,0 +1,59 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector="ToggleButton">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+		<Setter Property="Padding" Value="2"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Name="PART_ContentPresenter"
+								  Background="{TemplateBinding Background}"
+								  BorderBrush="{TemplateBinding BorderBrush}"
+								  BorderThickness="{TemplateBinding BorderThickness}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  Content="{TemplateBinding Content}"
+								  Padding="{TemplateBinding Padding}"
+								  CornerRadius="5"
+								  TextBlock.Foreground="{TemplateBinding Foreground}"
+								  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="ToggleButton:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:pressed  /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton > Path">
+		<Setter Property="Fill" Value="{DynamicResource ForegroundBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:checked > Path">
+		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:checked">
+		<Setter Property="Foreground" Value="{DynamicResource PressedForegroundBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:pressed > Path">
+		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:pressed">
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Background" Value="{DynamicResource ThemeSelectedControlBrush}"/>
+	</Style>
+	<Style Selector="ToggleButton:pointerover /template/ ContentPresenter">
+		<Setter Property="BorderBrush" Value="Transparent"/>
+	</Style>
+	<Style Selector="ToggleButton:checked /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+	</Style>
+</Styles>

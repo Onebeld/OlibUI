@@ -1,0 +1,44 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector="TabItem">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="Padding" Value="10 0 10 2"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Grid Background="{TemplateBinding Background}" RowDefinitions="5,*">
+					<Border Name="indicator"/>
+					<ContentPresenter Grid.Row="1"
+						Name="PART_ContentPresenter"
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						ContentTemplate="{TemplateBinding HeaderTemplate}"
+						Content="{TemplateBinding Header}"
+						HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+						VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+						Margin="{TemplateBinding Margin}"
+						Padding="{TemplateBinding Padding}"/>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+	<Style Selector="TabItem:pointerover">
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
+	</Style>
+	<Style Selector="TabItem:selected">
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
+	</Style>
+	<Style Selector="TabItem:selected /template/ Border#indicator">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+	</Style>
+
+	<Style Selector="TabItem:disabled">
+		<Setter Property="Opacity" Value="0.5"/>
+	</Style>
+	<Style Selector="TabItem[TabStripPlacement=Right]">
+		<Setter Property="HorizontalContentAlignment" Value="Right"/>
+	</Style>
+</Styles>

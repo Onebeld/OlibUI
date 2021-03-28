@@ -1,0 +1,183 @@
+<olib:OlibWindow xmlns="https://github.com/avaloniaui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:vm="using:OlibUI.Sample.ViewModels"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		         xmlns:olib="using:OlibUI.Windows"
+				 xmlns:inst="using:OlibUI.Instruments"
+                 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+                 x:Class="OlibUI.Sample.Views.MainWindow"
+				 WindowStartupLocation="CenterScreen"
+				 TransparencyLevelHint="AcrylicBlur"
+				 WindowButtons="All"
+                 Icon="/Assets/avalonia-logo.ico"
+                 Title="OlibUI.Sample">
+	<olib:OlibWindow.DataContext>
+        <vm:MainWindowViewModel/>
+    </olib:OlibWindow.DataContext>
+	<olib:OlibWindow.Resources>
+        <inst:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    </olib:OlibWindow.Resources>
+
+	<Border Background="{DynamicResource BorderBackgroundBrush}">
+		<Grid Margin="5" RowDefinitions="Auto,*">
+			<DockPanel>
+				<TextBlock Text="Theme:" />
+				<ComboBox Margin="5 0 0 0" SelectedIndex="{Binding Theme}" MinHeight="18">
+					<ComboBoxItem Content="{DynamicResource Dazzling}" />
+					<ComboBoxItem Content="{DynamicResource Gloomy}" />
+					<ComboBoxItem Content="{DynamicResource Mysterious}" />
+					<ComboBoxItem Content="{DynamicResource Turquoise}" />
+					<ComboBoxItem Content="{DynamicResource Emerald}" />
+				</ComboBox>
+			</DockPanel>
+
+			<Grid Margin="0 5 0 0" Grid.Row="1" ColumnDefinitions="*,5,*" RowDefinitions="Auto,*,Auto">
+				<ListBox Grid.RowSpan="2" Margin="0 0 0 5" Items="{Binding CustomThemes}" SelectedItem="{Binding CustomTheme}">
+					<ListBox.DataTemplates>
+						<DataTemplate>
+							<TextBlock Margin="5 0 0 0" Text="{Binding Name}"/>
+						</DataTemplate>
+					</ListBox.DataTemplates>
+					<ListBox.ContextMenu>
+						<ContextMenu IsVisible="{Binding CustomTheme, Converter={x:Static ObjectConverters.IsNotNull}}">
+							<MenuItem Header="Copy" Command="{Binding CopyTheme}"/>
+							<MenuItem Header="Paste" Command="{Binding PasteTheme}"/>
+						</ContextMenu>
+					</ListBox.ContextMenu>
+				</ListBox>
+				<TextBox Grid.Row="0" Grid.Column="2" Watermark="Theme name" TextAlignment="Center" Text="{Binding CustomTheme.Name, Mode=TwoWay}" IsEnabled="{Binding CustomTheme, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+				<Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" BorderThickness="1" CornerRadius="5" Classes="Panel" Margin="0 5 0 0">
+					<ScrollViewer>
+						<StackPanel Spacing="5" Margin="5 5 20 5" Name="Buttons" IsEnabled="{Binding CustomTheme, Converter={x:Static ObjectConverters.IsNotNull}}">
+							<StackPanel.Styles>
+								<Style Selector="Button">
+									<Setter Property="ContextMenu">
+										<Setter.Value>
+											<ContextMenu>
+												<MenuItem Header="Copy" Command="{Binding CopyColor}"
+														  CommandParameter="{Binding $parent[Button]}"/>
+												<MenuItem Header="Paste" Command="{Binding PasteColor}"
+														  CommandParameter="{Binding $parent[Button]}"/>
+											</ContextMenu>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</StackPanel.Styles>
+
+							<DockPanel>
+								<TextBlock Text="Accent" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.AccentColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Background" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.BackgroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Hover background" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.HoverBackgroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Foreground" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.ForegroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Foreground opacity" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.ForegroundOpacityColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Pressed foreground" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.PressedForegroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Border" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.BorderColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Border background" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.BorderBackgroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Window border" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.WindowBorderColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="ScrollBox" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.ScrollBoxColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Hover ScrollBox" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.HoverScrollBoxColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Error" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.ErrorColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
+								<TextBlock Text="Window border background" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.WindowBorderBackgroundColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+						</StackPanel>
+					</ScrollViewer>
+				</Border>
+
+				<StackPanel Grid.Row="2" Grid.Column="0" Spacing="5">
+					<Button Command="{Binding Delete}" Content="Delete" IsEnabled="{Binding CustomTheme, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+					<Button Command="{Binding Create}" Content="Create"/>
+				</StackPanel>
+			</Grid>
+		</Grid>
+	</Border>
+</olib:OlibWindow>

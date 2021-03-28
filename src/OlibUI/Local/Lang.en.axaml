@@ -1,0 +1,32 @@
+﻿<Style xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:v="using:System">
+	<Style.Resources>
+		<!-- MainWindow -->
+		<v:String x:Key="Collapse">Collapse</v:String>
+		<v:String x:Key="Expand">Expand</v:String>
+		<v:String x:Key="Reestablish">Reestablish</v:String>
+		<v:String x:Key="Close">Close</v:String>
+		<!-- MainWindow -->
+
+		<!-- Settings -->
+		<v:String x:Key="Dazzling">Dazzling</v:String>
+		<v:String x:Key="Gloomy">Gloomy</v:String>
+		<v:String x:Key="Mysterious">Mysterious</v:String>
+		<v:String x:Key="Turquoise">Turquoise</v:String>
+		<v:String x:Key="Emerald">Emerald</v:String>
+		<!-- Settings -->
+
+		<!-- ContextMenu -->
+		<v:String x:Key="Cut">Cut</v:String>
+		<v:String x:Key="Paste">Paste</v:String>
+		<v:String x:Key="Copy">Copy</v:String>
+		<!-- ContextMenu -->
+
+		<v:String x:Key="NoName">No name</v:String>
+		<v:String x:Key="ChooseColor">Choose color</v:String>
+		
+		<v:String x:Key="Cancel">Cancel</v:String>
+		<v:String x:Key="OK">OK</v:String>
+	</Style.Resources>
+</Style>

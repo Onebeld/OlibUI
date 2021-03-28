@@ -1,0 +1,18 @@
+﻿<Style xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style.Resources>
+	    <Color x:Key="BackgroundColor">#FF000000</Color>
+	    <Color x:Key="HoverBackgroundColor">#FF2B2B2B</Color>
+	    <Color x:Key="ForegroundColor">#FFFFFFFF</Color>
+	    <Color x:Key="ForegroundOpacityColor">#FF777777</Color>
+	    <Color x:Key="PressedForegroundColor">#FFFFFFFF</Color>
+	    <Color x:Key="AccentColor">#FF931D60</Color>
+	    <Color x:Key="BorderBackgroundColor">#FF1C1C1C</Color>
+	    <Color x:Key="BorderColor">#FF525252</Color>
+	    <Color x:Key="WindowBorderColor">#FF525252</Color>
+	    <Color x:Key="HoverScrollBoxColor">#FF464646</Color>
+	    <Color x:Key="ScrollBoxColor">#FF575757</Color>
+	    <Color x:Key="ErrorColor">#FFBD0000</Color>
+	    <Color x:Key="WindowBorderBackgroundColor">#CC1C1C1C</Color>
+    </Style.Resources>
+</Style>

@@ -1,0 +1,75 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector="Button">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="Padding" Value="10 5"/>
+		<Setter Property="RenderTransform" Value="none" />
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter x:Name="PART_ContentPresenter"
+								  Background="{TemplateBinding Background}"
+								  BorderBrush="{TemplateBinding BorderBrush}"
+								  BorderThickness="{TemplateBinding BorderThickness}"
+								  Content="{TemplateBinding Content}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  Padding="{TemplateBinding Padding}"
+								  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+			</ControlTemplate>
+		</Setter>
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector="Button /template/ContentPresenter">
+		<Setter Property="CornerRadius" Value="5"/>
+	</Style>
+	<Style Selector="Button.TopNotCornerRadius /template/ContentPresenter">
+		<Setter Property="CornerRadius" Value="0 0 5 5"/>
+	</Style>
+	<Style Selector="Button:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+	</Style>
+	<Style Selector="Button:pressed  /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+	</Style>
+	<Style Selector="Button > Path">
+		<Setter Property="Fill" Value="{DynamicResource ForegroundBrush}"/>
+	</Style>
+	<Style Selector="Button:pressed > Path">
+		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+	</Style>
+	<Style Selector="Button:pressed">
+		<Setter Property="Foreground" Value="{DynamicResource PressedForegroundBrush}"/>
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
+	</Style>
+
+	<Style Selector="Button:disabled">
+		<Setter Property="Opacity" Value="0.5"/>
+	</Style>
+
+	<Style Selector="Button.NoBorder">
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+	<Style Selector="Button.NoBorder /template/ContentPresenter">
+		<Setter Property="CornerRadius" Value="0"/>
+	</Style>
+	
+	<Style Selector="Button.SelectionColor:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="{TemplateBinding Background}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+	</Style>
+	<Style Selector="Button.SelectionColor:pressed /template/ ContentPresenter">
+		<Setter Property="Background" Value="{TemplateBinding Background}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+	</Style>
+</Styles>

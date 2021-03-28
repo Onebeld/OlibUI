@@ -1,0 +1,61 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<StackPanel Spacing="20">
+				<RepeatButton Content="Click Me!" />
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+	<Styles.Resources>
+		<Thickness x:Key="ButtonPadding">8,5,8,6</Thickness>
+	</Styles.Resources>
+	<Style Selector="RepeatButton">
+		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+		<!--<Setter Property="BackgroundSizing" Value="OuterBorderEdge" />-->
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="5 2" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="FontSize" Value="12" />
+		<!--<Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+    <Setter Property="FocusVisualMargin" Value="-3" />-->
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter x:Name="PART_ContentPresenter"
+								  Background="{TemplateBinding Background}"
+								  BorderBrush="{TemplateBinding BorderBrush}"
+								  BorderThickness="{TemplateBinding BorderThickness}"
+								  Content="{TemplateBinding Content}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  Padding="{TemplateBinding Padding}"
+								  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="RepeatButton /template/ ContentPresenter">
+		<Setter Property="CornerRadius" Value="5" />
+	</Style>
+	
+	<Style Selector="RepeatButton:pointerover">
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}" />
+	</Style>
+
+	<Style Selector="RepeatButton:pressed">
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PressedForegroundBrush}" />
+	</Style>
+	<Style Selector="RepeatButton:pressed > Path">
+		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+	</Style>
+
+	<Style Selector="RepeatButton:disabled /template/ ContentPresenter">
+		<Setter Property="Opacity" Value="0.5" />
+	</Style>
+</Styles>
