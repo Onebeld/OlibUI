@@ -68,10 +68,22 @@ namespace YourApp
 
 ```
 
+## Screenshots
+
+These are examples of what your application might look like.
+
+<img src=".github/images/screenshots/SampleDazzling.png"/>
+
+<img src=".github/images/screenshots/SampleTurquoise.png"/>
+
+<img src=".github/images/screenshots/SampleCustomTheme.png"/>
+
+[Regul](https://github.com/Onebeld/Regul)
+
+<img src=".github/images/screenshots/RegulDazzling.png"/>
+
 ## Credits
 * [AvaloniaUI](https://github.com/AvaloniaUI/Avalonia)
 * [ColorPicker](https://github.com/wieslawsoltes/ThemeEditor) by wieslawsoltes
 
-<h3 align="right">
-  <img src=".github/images/OnebeldLogo.png" width="350"/>
-</h3>
+<img src=".github/images/OnebeldLogo.png" width="350" align="right"/>
