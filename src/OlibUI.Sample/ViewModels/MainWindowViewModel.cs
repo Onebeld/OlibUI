@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace OlibUI.Sample.ViewModels
 {
@@ -146,7 +146,7 @@ namespace OlibUI.Sample.ViewModels
                         break;
                 }
                 if (!string.IsNullOrEmpty(customTheme.Name))
-                    File.WriteAllText($"Themes/{customTheme.Name}.json", JsonSerializer.Serialize(customTheme));
+                    File.WriteAllText($"Themes/{customTheme.Name}.json", JsonConvert.SerializeObject(customTheme));
             }
 
             if (CustomTheme != null)
@@ -160,7 +160,7 @@ namespace OlibUI.Sample.ViewModels
                 foreach (string path in Directory.EnumerateFiles("Themes"))
                 {
                     string json = File.ReadAllText(path);
-                    CustomThemes.Add(JsonSerializer.Deserialize<Theme>(json));
+                    CustomThemes.Add(JsonConvert.DeserializeObject<Theme>(json));
                 }
             }
         }
@@ -234,14 +234,14 @@ namespace OlibUI.Sample.ViewModels
 
         private void CopyTheme()
         {
-            Application.Current.Clipboard.SetTextAsync(JsonSerializer.Serialize(CustomTheme));
+            Application.Current.Clipboard.SetTextAsync(JsonConvert.SerializeObject(CustomTheme));
         }
 
         private async void PasteTheme()
         {
             try
             {
-                Theme theme = JsonSerializer.Deserialize<Theme>(await Application.Current.Clipboard.GetTextAsync());
+                Theme theme = JsonConvert.DeserializeObject<Theme>(await Application.Current.Clipboard.GetTextAsync());
 
                 CustomThemes[CustomThemes.IndexOf(CustomTheme)] = theme;
                 CustomTheme = theme;
