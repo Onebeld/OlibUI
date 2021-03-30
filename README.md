@@ -13,8 +13,22 @@ OlibUI - dynamic user interface for AvaloniaUI. The main advantages of this libr
 ## Installation
 Installation via command line:
 ```cmd
-dotnet package OlibUI
+dotnet add package OlibUI --version 2.0.0
 ```
+
+Installation using a package manager:
+```cmd
+Install-Package OlibUI -Version 2.0.0
+```
+
+Inserting into .csproj PackageReference:
+```xml
+<PackageReference Include="OlibUI" Version="2.0.0" />
+```
+
+Installation with Visual Studio:
+
+<img src=".github/images/VisualStudioInstalation.png" />
 
 ## Preparation
 The library can work without a default theme. Therefore, we just connect OlibUI. You also need to connect the theme. In this case, we connect "Dazzling", there are only 5 of them.
