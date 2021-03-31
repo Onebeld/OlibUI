@@ -10,6 +10,14 @@ namespace OlibUI.Sample.Views
         {
             InitializeComponent();
             Closing += (sender, args) => ((MainWindowViewModel) DataContext)?.Closing();
+
+            Activated += MainWindow_Activated;
+        }
+
+        private void MainWindow_Activated(object sender, System.EventArgs e)
+        {
+            Program.sw.Stop();
+            Title = Program.sw.Elapsed.ToString();
         }
 
         private void InitializeComponent()

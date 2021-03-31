@@ -22,6 +22,8 @@ namespace OlibUI.Sample
 
         public static MainWindow MainWindow { get; set; }
 
+        public static System.Diagnostics.Stopwatch sw;
+
         public static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -29,7 +31,7 @@ namespace OlibUI.Sample
             Settings = File.Exists(AppDomain.CurrentDomain.BaseDirectory + "settings.json")
                 ? FileSettings.LoadSettings()
                 : new Settings();
-
+            sw = Stopwatch.StartNew();
             BuildAvaloniaApp().Start(AppMain, args);
         }
 

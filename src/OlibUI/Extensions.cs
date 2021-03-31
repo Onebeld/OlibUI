@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Avalonia.Media;
 using OlibUI.Structures;
 
@@ -7,11 +6,6 @@ namespace OlibUI
 {
     public static class Extensions
     {
-        private static string Invariant(double value)
-        {
-            return FormattableString.Invariant($"{value}");
-        }
-        
         public static IBrush ToBursh(this Color color)
         {
             return new SolidColorBrush(color);

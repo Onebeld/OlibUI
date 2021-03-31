@@ -16,116 +16,116 @@
 				<Border Classes="OuterBorder" BorderBrush="{DynamicResource WindowBorderBrush}" BorderThickness="1">
 					<Grid Name="MarginWindow" RowDefinitions="31,*,Auto">
 						<Border Classes="BorderStyle"  ZIndex="10" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2">
-								<StackPanel VerticalAlignment="Center" Margin="30 10">
-									<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center"/>
-									<ProgressBar Value="{TemplateBinding ProgressLoad}" Maximum="100"/>
-								</StackPanel>
-							</Border>
-							<Border ZIndex="5" Grid.Row="1" Grid.RowSpan="2" Opacity="0.2" IsVisible="{TemplateBinding InLoadMode}" Background="Black"/>
+							<StackPanel VerticalAlignment="Center" Margin="30 10">
+								<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
+								<ProgressBar Value="{TemplateBinding ProgressLoad}" Maximum="100" IsIndeterminate="{TemplateBinding IsIndeterminate}"/>
+							</StackPanel>
+						</Border>
+						<Border ZIndex="5" Grid.Row="1" Grid.RowSpan="2" Opacity="0.2" IsVisible="{TemplateBinding InLoadMode}" Background="Black"/>
 
 						<Border Grid.Row="0" Background="{DynamicResource WindowBorderBackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0 0 0 1">
 							<Grid ColumnDefinitions="Auto,*,Auto">
-									<Border Name="TitleBar" Grid.ColumnSpan="2" Background="Transparent">
-										<Border.ContextMenu>
-											<ContextMenu Name="GlobalContextMenu">
-												<MenuItem Header="{DynamicResource Reestablish}" Name="ReestablishMenuItem">
-													<MenuItem.Icon>
-														<Grid Width="10" Height="10">
-															<Border BorderThickness="2" BorderBrush="{DynamicResource ForegroundBrush}" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-															<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
-																<Border BorderThickness="0 2 2 0" BorderBrush="{DynamicResource ForegroundBrush}"/>
-															</Grid>
+								<Border Name="TitleBar" Grid.ColumnSpan="2" Background="Transparent">
+									<Border.ContextMenu>
+										<ContextMenu Name="GlobalContextMenu">
+											<MenuItem Header="{DynamicResource Reestablish}" Name="ReestablishMenuItem">
+												<MenuItem.Icon>
+													<Grid Width="10" Height="10">
+														<Border BorderThickness="2" BorderBrush="{DynamicResource ForegroundBrush}" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+														<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
+															<Border BorderThickness="0 2 2 0" BorderBrush="{DynamicResource ForegroundBrush}"/>
 														</Grid>
-													</MenuItem.Icon>
-												</MenuItem>
-												<MenuItem Header="{DynamicResource Collapse}" Name="CollapseMenuItem">
-													<MenuItem.Icon>
-														<Rectangle Width="10" Height="2" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
-													</MenuItem.Icon>
-												</MenuItem>
-												<MenuItem Header="{DynamicResource Expand}" Name="ExpandMenuItem">
-													<MenuItem.Icon>
-														<Rectangle Width="10" Height="10" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
-													</MenuItem.Icon>
-												</MenuItem>
-												<Separator Name="ContextMenuSeparator"/>
-
-												<MenuItem Header="{DynamicResource Close}" Name="CloseMenuItem" InputGesture="Ctrl+Q">
-													<MenuItem.Icon>
-														<Path Margin="4" Stretch="Fill" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}" Data="M 0 0 L 5 5 M 5 0 L 0 5"/>
-													</MenuItem.Icon>
-												</MenuItem>
-											</ContextMenu>
-										</Border.ContextMenu>
-									</Border>
-									<StackPanel Orientation="Horizontal" Margin="5,0,0,0" ZIndex="-10">
-										<Image Classes="IconImage" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16"/>
-										<TextBlock Name="TitleTextBlock" VerticalAlignment="Center" Text="{TemplateBinding Title}"/>
-										<Path Name="PathIcon" Stretch="Uniform" Width="50" VerticalAlignment="Center" Fill="{DynamicResource ForegroundBrush}" Data="{TemplateBinding TextIcon}"/>
-									</StackPanel>
-									<ContentPresenter Margin="5 0 0 0" Grid.Column="1" Content="{TemplateBinding TitleBarMenu}"/>
-									<StackPanel
-										Grid.Column="2"
-										Orientation="Horizontal">
-										<StackPanel.Styles>
-											<Style Selector="Button">
-												<Setter Property="Width" Value="45" />
-												<Setter Property="Height" Value="30" />
-											</Style>
-											<Style Selector="Button > Path">
-												<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-												<Setter Property="StrokeThickness" Value="2"/>
-											</Style>
-											<Style Selector="Button:not(:pointerover):not(:pressed):disabled">
-												<Setter Property="Opacity" Value="0.5" />
-											</Style>
-											<Style Selector="Button#MinimizeButton > Rectangle">
-												<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-											</Style>
-											<Style Selector="Button#MaximizeButton Rectangle">
-												<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-												<Setter Property="StrokeThickness" Value="2"/>
-											</Style>
-											<Style Selector="Button#MaximizeButton > Grid > Grid Border">
-												<Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-											</Style>
-											<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Button#MaximizeButton > Grid > Rectangle">
-												<Setter Property="IsVisible" Value="False"/>
-											</Style>
-											<Style Selector="local|OlibWindow[WindowState=Normal] /template/ Button#MaximizeButton > Grid > Grid">
-												<Setter Property="IsVisible" Value="False"/>
-											</Style>
-											<Style Selector="local|OlibWindow[WindowState=Minimized] /template/ Button#MaximizeButton > Grid > Grid">
-												<Setter Property="IsVisible" Value="False"/>
-											</Style>
-											<Style Selector="Button#MaximizeButton > Grid > Grid > Rectangle">
-												<Setter Property="Stroke" Value="Transparent"/>
-												<Setter Property="StrokeThickness" Value="0"/>
-												<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-											</Style>
-											<Style Selector="local|OlibWindow[IsActive=false] /template/ Button:not(:pointerover):not(:pressed)">
-												<Setter Property="Foreground" Value="{DynamicResource ForegroundOpacityBrush}"/>
-											</Style>
-										</StackPanel.Styles>
-										<Button Name="MinimizeButton" Classes="NoBorder">
-											<Rectangle Width="10" Height="2"/>
-										</Button>
-										<Button Name="MaximizeButton" Classes="NoBorder">
-											<Grid>
-												<Rectangle Width="10" Height="10"/>
-												<Grid Width="10" Height="10">
-													<Border BorderThickness="2" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-													<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
-														<Border BorderThickness="0 2 2 0"/>
 													</Grid>
+												</MenuItem.Icon>
+											</MenuItem>
+											<MenuItem Header="{DynamicResource Collapse}" Name="CollapseMenuItem">
+												<MenuItem.Icon>
+													<Rectangle Width="10" Height="2" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
+												</MenuItem.Icon>
+											</MenuItem>
+											<MenuItem Header="{DynamicResource Expand}" Name="ExpandMenuItem">
+												<MenuItem.Icon>
+													<Rectangle Width="10" Height="10" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
+												</MenuItem.Icon>
+											</MenuItem>
+											<Separator Name="ContextMenuSeparator"/>
+
+											<MenuItem Header="{DynamicResource Close}" Name="CloseMenuItem" InputGesture="Ctrl+Q">
+												<MenuItem.Icon>
+													<Path Margin="4" Stretch="Fill" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}" Data="M 0 0 L 5 5 M 5 0 L 0 5"/>
+												</MenuItem.Icon>
+											</MenuItem>
+										</ContextMenu>
+									</Border.ContextMenu>
+								</Border>
+								<StackPanel Orientation="Horizontal" Margin="5,0,0,0" ZIndex="-10">
+									<Image Classes="IconImage" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16"/>
+									<TextBlock Name="TitleTextBlock" VerticalAlignment="Center" Text="{TemplateBinding Title}"/>
+									<Path Name="PathIcon" Stretch="Uniform" Width="50" VerticalAlignment="Center" Fill="{DynamicResource ForegroundBrush}" Data="{TemplateBinding TextIcon}"/>
+								</StackPanel>
+								<ContentPresenter Margin="5 0 0 0" Grid.Column="1" Content="{TemplateBinding TitleBarMenu}"/>
+								<StackPanel
+									Grid.Column="2"
+									Orientation="Horizontal">
+									<StackPanel.Styles>
+										<Style Selector="Button">
+											<Setter Property="Width" Value="45" />
+											<Setter Property="Height" Value="30" />
+										</Style>
+										<Style Selector="Button > Path">
+											<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+											<Setter Property="StrokeThickness" Value="2"/>
+										</Style>
+										<Style Selector="Button:not(:pointerover):not(:pressed):disabled">
+											<Setter Property="Opacity" Value="0.5" />
+										</Style>
+										<Style Selector="Button#MinimizeButton > Rectangle">
+											<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+										</Style>
+										<Style Selector="Button#MaximizeButton Rectangle">
+											<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+											<Setter Property="StrokeThickness" Value="2"/>
+										</Style>
+										<Style Selector="Button#MaximizeButton > Grid > Grid Border">
+											<Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+										</Style>
+										<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Button#MaximizeButton > Grid > Rectangle">
+											<Setter Property="IsVisible" Value="False"/>
+										</Style>
+										<Style Selector="local|OlibWindow[WindowState=Normal] /template/ Button#MaximizeButton > Grid > Grid">
+											<Setter Property="IsVisible" Value="False"/>
+										</Style>
+										<Style Selector="local|OlibWindow[WindowState=Minimized] /template/ Button#MaximizeButton > Grid > Grid">
+											<Setter Property="IsVisible" Value="False"/>
+										</Style>
+										<Style Selector="Button#MaximizeButton > Grid > Grid > Rectangle">
+											<Setter Property="Stroke" Value="Transparent"/>
+											<Setter Property="StrokeThickness" Value="0"/>
+											<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+										</Style>
+										<Style Selector="local|OlibWindow[IsActive=false] /template/ Button:not(:pointerover):not(:pressed)">
+											<Setter Property="Foreground" Value="{DynamicResource ForegroundOpacityBrush}"/>
+										</Style>
+									</StackPanel.Styles>
+									<Button Name="MinimizeButton" Classes="NoBorder">
+										<Rectangle Width="10" Height="2"/>
+									</Button>
+									<Button Name="MaximizeButton" Classes="NoBorder">
+										<Grid>
+											<Rectangle Width="10" Height="10"/>
+											<Grid Width="10" Height="10">
+												<Border BorderThickness="2" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+												<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
+													<Border BorderThickness="0 2 2 0"/>
 												</Grid>
 											</Grid>
-										</Button>
-										<Button Name="CloseButton" Classes="NoBorder">
-											<Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-										</Button>
-									</StackPanel>
-								</Grid>
+										</Grid>
+									</Button>
+									<Button Name="CloseButton" Classes="NoBorder">
+										<Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+									</Button>
+								</StackPanel>
+							</Grid>
 						</Border>
 						<ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}"/>
 						<Border Name="BottomBorder" Height="50" Classes="Panel" Grid.Row="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource WindowBorderBackgroundBrush}">

@@ -25,6 +25,11 @@
 		<AvaloniaResource Include="Instruments\**" />
 		<AvaloniaResource Include="Windows\OlibWindow.axaml" />
 		<AvaloniaResource Include="Local\**" />
+		<AvaloniaXaml Remove="Controls\AutoCompleteBox.axaml" />
+		<AvaloniaXaml Remove="Controls\Carousel.axaml" />
+		<AvaloniaXaml Remove="Controls\RadioButton.axaml" />
+		<AvaloniaXaml Remove="Controls\Slider.axaml" />
+		<AvaloniaXaml Remove="Controls\ToggleSwitch.axaml" />
 		<AvaloniaResource Include="OlibUI.axaml" />
 	</ItemGroup>
 	<ItemGroup>

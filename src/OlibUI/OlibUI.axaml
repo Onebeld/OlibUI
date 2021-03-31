@@ -1,8 +1,5 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Styles.Resources>
 		<SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource BackgroundColor}"/>
 		<SolidColorBrush x:Key="HoverBackgroundBrush" Color="{DynamicResource HoverBackgroundColor}"/>
@@ -50,6 +47,11 @@
 	<StyleInclude Source="/Controls/GridSplitter.axaml"/>
 	<StyleInclude Source="/Controls/ButtonSpinner.axaml"/>
 	<StyleInclude Source="/Controls/NumericUpDown.axaml"/>
+	<StyleInclude Source="/Controls/AutoCompleteBox.axaml"/>
+	<StyleInclude Source="/Controls/Slider.axaml"/>
+	<StyleInclude Source="/Controls/RadioButton.axaml"/>
+	<StyleInclude Source="/Controls/Carousel.axaml"/>
+	<StyleInclude Source="/Controls/ToggleSwitch.axaml"/>
 	<!-- Controls -->
 	
 	<!-- Instruments -->
@@ -61,12 +63,6 @@
 		<Setter Property="CornerRadius" Value="5"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-	</Style>
-
-	<Style Selector="Separator">
-		<Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
-		<Setter Property="Height" Value="1"/>
-		<Setter Property="Margin" Value="15 5"/>
 	</Style>
 
 	<Style Selector="Border.Panel">

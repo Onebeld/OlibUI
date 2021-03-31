@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using OlibUI.Sample.Views.Windows;
 
 namespace OlibUI.Sample.ViewModels
 {
@@ -95,6 +96,11 @@ namespace OlibUI.Sample.ViewModels
             Initialize();
         }
 
+        private void OpenWindowWithControls()
+        {
+            new WindowWithControls().ShowDialog(Program.MainWindow);
+        }
+
         private void Initialize()
         {
             LoadThemes();
@@ -151,6 +157,8 @@ namespace OlibUI.Sample.ViewModels
 
             if (CustomTheme != null)
                 Program.Settings.Theme = CustomTheme.Name;
+
+            FileSettings.SaveSettings();
         }
 
         private void LoadThemes()

@@ -29,6 +29,8 @@ namespace OlibUI.Windows
             AvaloniaProperty.Register<OlibWindow, IControl>(nameof(TitleBarMenu));
         public static readonly StyledProperty<bool> InLoadModeProperty =
             AvaloniaProperty.Register<OlibWindow, bool>(nameof(InLoadMode));
+        public static readonly StyledProperty<bool> IsIndeterminateProperty =
+            AvaloniaProperty.Register<OlibWindow, bool>(nameof(IsIndeterminate));
         public static readonly StyledProperty<Geometry> TextIconProperty =
             AvaloniaProperty.Register<OlibWindow, Geometry>(nameof(TextIcon));
         public static readonly StyledProperty<int> ProgressLoadProperty = 
@@ -61,12 +63,18 @@ namespace OlibUI.Windows
         }
 
         /// <summary>
-        /// Activates download mode. The window cannot be closed
+        /// Activates load mode. 
         /// </summary>
         public bool InLoadMode
         {
             get => GetValue(InLoadModeProperty);
             set => SetValue(InLoadModeProperty, value);
+        }
+
+        public bool IsIndeterminate
+        {
+            get => GetValue(IsIndeterminateProperty);
+            set => SetValue(IsIndeterminateProperty, value);
         }
 
         /// <summary>
@@ -90,9 +98,7 @@ namespace OlibUI.Windows
             set => SetValue(ProgressTextProperty, value);
         }
 
-        static OlibWindow()
-        {
-        }
+        static OlibWindow() { }
 
         Type IStyleable.StyleKey => typeof(OlibWindow);
 
@@ -106,28 +112,17 @@ namespace OlibUI.Windows
         private Grid MarginWindow;
         private Path PathIcon;
 
-        private void SetupSide(string name, StandardCursorType cursor, WindowEdge edge, ref TemplateAppliedEventArgs e)
-        {
-            Control control = e.NameScope.Get<Control>(name);
-            control.Cursor = new Cursor(cursor);
-            control.PointerPressed += (_, ep) =>
-            {
-                if (ep.GetCurrentPoint(control).Properties.IsLeftButtonPressed)
-                    ((Window)this.GetVisualRoot()).PlatformImpl?.BeginResizeDrag(edge, ep);
-            };
-        }
-
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
-            OlibWindow window = this;
 
-            SizeToContent content = window.SizeToContent;
+            SizeToContent content = SizeToContent;
 
-            window.ExtendClientAreaToDecorationsHint = true;
-            window.ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.PreferSystemChrome;
+            ExtendClientAreaToDecorationsHint = true;
+            ExtendClientAreaChromeHints = Avalonia.Platform.ExtendClientAreaChromeHints.PreferSystemChrome;
+            ExtendClientAreaTitleBarHeightHint = -1;
 
-            window.SizeToContent = content;
+            SizeToContent = content;
 
             ReestablishMenuItem = GetControl<MenuItem>(e, "ReestablishMenuItem");
             ExpandMenuItem = GetControl<MenuItem>(e, "ExpandMenuItem");
@@ -165,26 +160,23 @@ namespace OlibUI.Windows
                     {
                         if (WindowButtons == WindowButtons.CloseAndExpand || WindowButtons == WindowButtons.All)
                         {
-                            window.WindowState = ((Window)this.GetVisualRoot()).WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+                            WindowState = ((Window)this.GetVisualRoot()).WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
                         }
                     };
                 }
 
-                window.KeyDown += (s, ep) =>
+                KeyDown += (s, ep) =>
                 {
-                    if (ep.KeyModifiers == KeyModifiers.Control && ep.Key == Key.Q)
-                    {
-                        window.Close();
-                    }
+                    if (ep.KeyModifiers == KeyModifiers.Control && ep.Key == Key.Q) Close();
                 };
 
                 titleBar.PointerPressed += (s, ep) =>
                 {
                     GetControl<ContextMenu>(e, "GlobalContextMenu").Close();
-                    window.PlatformImpl?.BeginMoveDrag(ep);
+                    PlatformImpl?.BeginMoveDrag(ep);
                 };
 
-                window.PointerReleased += (s, ep) =>
+                PointerReleased += (s, ep) =>
                 {
                     GetControl<ContextMenu>(e, "GlobalContextMenu").Close();
                 };
@@ -203,13 +195,13 @@ namespace OlibUI.Windows
                 Button minimizeButton = GetControl<Button>(e, "MinimizeButton");
                 minimizeButton.Click += (s, ep) =>
                 {
-                    window.WindowState = WindowState.Minimized;
+                    WindowState = WindowState.Minimized;
                 };
 
                 Button maximizeButton = GetControl<Button>(e, "MaximizeButton");
                 maximizeButton.Click += (s, ep) =>
                 {
-                    window.WindowState = window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+                    WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
                 };
 
                 if (WindowButtons != WindowButtons.All)
@@ -218,13 +210,13 @@ namespace OlibUI.Windows
                     if (WindowButtons != WindowButtons.CloseAndExpand) maximizeButton.IsVisible = false;
                 }
 
-                GetControl<Button>(e, "CloseButton").Click += (s, ep) => window.Close();
+                GetControl<Button>(e, "CloseButton").Click += (s, ep) => Close();
 
-                ReestablishMenuItem.Click += (s, ep) => window.WindowState = WindowState.Normal;
-                ExpandMenuItem.Click += (s, ep) => window.WindowState = WindowState.Maximized;
-                CollapseMenuItem.Click += (s, ep) => window.WindowState = WindowState.Minimized;
+                ReestablishMenuItem.Click += (s, ep) => WindowState = WindowState.Normal;
+                ExpandMenuItem.Click += (s, ep) => WindowState = WindowState.Maximized;
+                CollapseMenuItem.Click += (s, ep) => WindowState = WindowState.Minimized;
 
-                GetControl<MenuItem>(e, "CloseMenuItem").Click += (s, ep) => window.Close();
+                GetControl<MenuItem>(e, "CloseMenuItem").Click += (s, ep) => Close();
 
                 if (WindowButtons == WindowButtons.CloseAndCollapse)
                 {

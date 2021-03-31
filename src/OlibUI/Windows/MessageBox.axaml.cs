@@ -17,7 +17,8 @@ namespace OlibUI.Windows
             Information,
             Error,
             Warning,
-            Question
+            Question,
+            None
         }
 
         public MessageBox() => AvaloniaXamlLoader.Load(this);
@@ -26,13 +27,13 @@ namespace OlibUI.Windows
         /// Shows a message box
         /// </summary>
         /// <param name="parent">Snap to window (could be null)</param>
-        /// <param name="text">Content message box</param>
         /// <param name="title">Name of the message box</param>
-        /// <param name="textException">Adding additional information</param>
-        /// <param name="icon">Message box icon</param>
+        /// <param name="text">Content message box</param>
         /// <param name="buttons">Creating buttons for a window</param>
+        /// <param name="icon">Message box icon</param>
+        /// <param name="textException">Adding additional information</param>
         /// <returns>Result after pressing the button</returns>
-        public static Task<string> Show(Window parent, string text, string title, string textException, MessageBoxIcon icon, IList<MessageBoxButton> buttons)
+        public static Task<string> Show(Window parent, string title, string text, IList<MessageBoxButton> buttons, MessageBoxIcon icon = MessageBoxIcon.None, string textException = null)
         {
             MessageBox msgbox = new MessageBox
             {
@@ -89,6 +90,9 @@ namespace OlibUI.Windows
                     break;
                 case MessageBoxIcon.Warning:
                     ChangeIcon("Warning");
+                    break;
+
+                default:
                     break;
             }
 

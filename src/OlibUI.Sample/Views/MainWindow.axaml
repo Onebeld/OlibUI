@@ -18,8 +18,15 @@
 	<olib:OlibWindow.Resources>
         <inst:ColorToBrushConverter x:Key="ColorToBrushConverter" />
     </olib:OlibWindow.Resources>
+	<olib:OlibWindow.TitleBarMenu>
+		<Menu VerticalAlignment="Center" HorizontalAlignment="Left">
+			<MenuItem Header="Windows">
+				<MenuItem Header="Window with controls" Command="{Binding OpenWindowWithControls}"/>
+			</MenuItem>
+		</Menu>
+	</olib:OlibWindow.TitleBarMenu>
 
-	<Border Background="{DynamicResource BorderBackgroundBrush}">
+	<Border Background="{DynamicResource BorderBackgroundBrush}" >
 		<Grid Margin="5" RowDefinitions="Auto,*">
 			<DockPanel>
 				<TextBlock Text="Theme:" />
