@@ -29,25 +29,6 @@ namespace OlibUI.Controls.Chrome
         private MenuItem _reestablishMenuItem;
         private Separator _separator;
 
-
-        private void UpdateSize(OlibWindow window)
-        {
-            if (window != null)
-            {
-                if (window.WindowState != WindowState.FullScreen)
-                {
-                    Height = 30;
-
-                    if (_captionButtons != null)
-                    {
-                        _captionButtons.Height = Height;
-                    }
-                }
-
-                IsVisible = window.PlatformImpl.NeedsManagedDecorations;
-            }
-        }
-
         private void AttachIcon(OlibWindow window)
         {
             if (_image == null) return;
@@ -114,8 +95,6 @@ namespace OlibUI.Controls.Chrome
                         window.WindowState = window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
                 };
                 window.PointerReleased += (_, e1) => _contextMenu.Close();
-
-                UpdateSize(window);
             }
 
             Attach();
@@ -127,14 +106,6 @@ namespace OlibUI.Controls.Chrome
             {
                 _disposables = new CompositeDisposable
                 {
-                    window.GetObservable(OlibWindow.WindowDecorationMarginProperty)
-                        .Subscribe(x => UpdateSize(window)),
-                    window.GetObservable(OlibWindow.ExtendClientAreaTitleBarHeightHintProperty)
-                        .Subscribe(x => UpdateSize(window)),
-                    window.GetObservable(OlibWindow.OffScreenMarginProperty)
-                        .Subscribe(x => UpdateSize(window)),
-                    window.GetObservable(OlibWindow.ExtendClientAreaChromeHintsProperty)
-                        .Subscribe(x => UpdateSize(window)),
                     window.GetObservable(OlibWindow.WindowStateProperty)
                         .Subscribe(x =>
                         {
@@ -166,8 +137,6 @@ namespace OlibUI.Controls.Chrome
                         {
                             PseudoClasses.Set(":isactive", !x);
                         }),
-                    window.GetObservable(OlibWindow.IsExtendedIntoWindowDecorationsProperty)
-                        .Subscribe(x => UpdateSize(window)),
                     window.GetObservable(OlibWindow.IconProperty)
                         .Subscribe(x => AttachIcon(window)),
                     window.GetObservable(OlibWindow.TitleProperty)
