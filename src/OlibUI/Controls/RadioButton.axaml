@@ -74,13 +74,9 @@
 	</Style>
 
 	<!-- Pressed State -->
-	<Style Selector="RadioButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-		<Setter Property="(TextBlock.Foreground)" Value="{DynamicResource RadioButtonForegroundPressed}" />
-	</Style>
-
 	<Style Selector="RadioButton:pressed /template/ Ellipse#OuterEllipse">
 		<Setter Property="Stroke" Value="{DynamicResource AccentBrush}" />
-		<Setter Property="Fill" Value="{DynamicResource RadioButtonOuterEllipseFillPressed}" />
+		<Setter Property="Fill" Value="{DynamicResource AccentBrush}" />
 	</Style>
 
 	<!-- Disabled State -->

@@ -6,11 +6,8 @@ namespace OlibUI
 {
     public static class Extensions
     {
-        public static IBrush ToBursh(this Color color)
-        {
-            return new SolidColorBrush(color);
-        }
-        
+        public static IBrush ToBursh(this Color color) => new SolidColorBrush(color);
+
         public static string ToAxaml(this Theme theme)
         {
             var sb = new StringBuilder();

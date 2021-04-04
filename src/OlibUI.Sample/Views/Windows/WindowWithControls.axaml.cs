@@ -5,14 +5,6 @@ namespace OlibUI.Sample.Views.Windows
 {
     public class WindowWithControls : OlibWindow
     {
-        public WindowWithControls()
-        {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
+        public WindowWithControls() => AvaloniaXamlLoader.Load(this);
     }
 }

@@ -1,10 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Dialogs;
 using Avalonia.Rendering;
 using OlibUI.Sample.Structures;
 using OlibUI.Sample.Views;
-using OlibUI.Windows;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -22,7 +20,7 @@ namespace OlibUI.Sample
 
         public static MainWindow MainWindow { get; set; }
 
-        public static System.Diagnostics.Stopwatch sw;
+        public static Stopwatch sw;
 
         public static void Main(string[] args)
         {
@@ -73,8 +71,7 @@ namespace OlibUI.Sample
             }
             else
             {
-                result.UsePlatformDetect()
-                    .UseManagedSystemDialogs<AppBuilder, OlibWindow>();
+                result.UsePlatformDetect();
             }
             return result
                 .LogToTrace()

@@ -29,13 +29,10 @@
 							BorderThickness="{TemplateBinding BorderThickness}">
 						<Grid>
 							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="Auto"
-												  SharedSizeGroup="MenuItemIcon" />
+								<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIcon" />
 								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto"
-												  SharedSizeGroup="MenuItemIGT" />
-								<ColumnDefinition Width="Auto"
-												  SharedSizeGroup="MenuItemChevron" />
+								<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGT" />
+								<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemChevron" />
 							</Grid.ColumnDefinitions>
 							<ContentPresenter Name="PART_IconPresenter"
 											  Content="{TemplateBinding Icon}"

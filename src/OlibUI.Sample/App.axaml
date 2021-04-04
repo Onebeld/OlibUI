@@ -2,9 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:OlibUI.Sample"
              x:Class="OlibUI.Sample.App">
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
 
     <Application.Styles>
 		<StyleInclude Source="avares://OlibUI/OlibUI.axaml"/>

@@ -55,14 +55,6 @@
 	<Style Selector="Button:disabled">
 		<Setter Property="Opacity" Value="0.5"/>
 	</Style>
-
-	<Style Selector="Button.NoBorder">
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Background" Value="Transparent"/>
-	</Style>
-	<Style Selector="Button.NoBorder /template/ContentPresenter">
-		<Setter Property="CornerRadius" Value="0"/>
-	</Style>
 	
 	<Style Selector="Button.SelectionColor:pointerover /template/ ContentPresenter">
 		<Setter Property="Background" Value="{TemplateBinding Background}"/>

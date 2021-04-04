@@ -7,9 +7,7 @@
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
-	<Styles.Resources>
-		<Thickness x:Key="ButtonPadding">8,5,8,6</Thickness>
-	</Styles.Resources>
+	
 	<Style Selector="RepeatButton">
 		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
 		<!--<Setter Property="BackgroundSizing" Value="OuterBorderEdge" />-->

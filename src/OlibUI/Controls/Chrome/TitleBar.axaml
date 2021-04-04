@@ -1,0 +1,100 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="using:OlibUI.Controls.Chrome">
+	<Style Selector="local|TitleBar">
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+		<Setter Property="Background" Value="{DynamicResource WindowBorderBackgroundBrush}"/>
+		<Setter Property="BorderThickness" Value="0 0 0 1"/>
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
+		<Setter Property="Height" Value="30" />
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="Stretch">
+					<Panel x:Name="PART_MouseTracker" Height="1" VerticalAlignment="Top" />
+					<Panel x:Name="PART_Container">
+						<Border x:Name="PART_Background" Background="{TemplateBinding Background}" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource BorderBrush}"/>
+
+						<Grid ColumnDefinitions="Auto,*,Auto">
+							<StackPanel Orientation="Horizontal"  Margin="5 0 0 0">
+								<Image x:Name="PART_Icon" MaxWidth="16" MaxHeight="16"/>
+								<TextBlock x:Name="PART_Title" VerticalAlignment="Center"/>
+								<Path x:Name="PART_TextIcon" Stretch="Uniform" Width="50" VerticalAlignment="Center" Fill="{DynamicResource ForegroundBrush}"/>
+							</StackPanel>
+
+							<Border x:Name="PART_DragWindow" Background="Transparent" Grid.ColumnSpan="2">
+								<Border.ContextMenu>
+									<ContextMenu x:Name="PART_ContextMenu">
+										<MenuItem Header="{DynamicResource Reestablish}" Name="PART_ReestablishMenuItem">
+											<MenuItem.Icon>
+												<Grid Width="10" Height="10">
+													<Border BorderThickness="2" BorderBrush="{DynamicResource ForegroundBrush}" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+													<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
+														<Border BorderThickness="0 2 2 0" BorderBrush="{DynamicResource ForegroundBrush}"/>
+													</Grid>
+												</Grid>
+											</MenuItem.Icon>
+										</MenuItem>
+										<MenuItem Header="{DynamicResource Collapse}" Name="PART_CollapseMenuItem">
+											<MenuItem.Icon>
+												<Rectangle Width="10" Height="2" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
+											</MenuItem.Icon>
+										</MenuItem>
+										<MenuItem Header="{DynamicResource Expand}" Name="PART_ExpandMenuItem">
+											<MenuItem.Icon>
+												<Rectangle Width="10" Height="10" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}"/>
+											</MenuItem.Icon>
+										</MenuItem>
+										<Separator Name="PART_Separator"/>
+
+										<MenuItem Header="{DynamicResource Close}" Name="PART_CloseMenuItem" InputGesture="Ctrl+Q">
+											<MenuItem.Icon>
+												<Path Margin="4" Stretch="Fill" StrokeThickness="2" Stroke="{DynamicResource ForegroundBrush}" Data="M 0 0 L 5 5 M 5 0 L 0 5"/>
+											</MenuItem.Icon>
+										</MenuItem>
+									</ContextMenu>
+								</Border.ContextMenu>
+							</Border>
+
+							<ContentPresenter x:Name="PART_TitleBarMenu" Grid.Column="1" Margin="5 0"/>
+
+							<local:CaptionButtons x:Name="PART_CaptionButtons" Grid.Column="2"/>
+						</Grid>
+					</Panel>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="local|TitleBar /template/ Image#PART_Icon:not(Image[Width=0])">
+		<Setter Property="Margin" Value="0 0 5 0"/>
+	</Style>
+	<Style Selector="local|TitleBar:isactive /template/ Path#PART_TextIcon">
+		<Setter Property="Fill" Value="{DynamicResource ForegroundOpacityBrush}"/>
+	</Style>
+	<Style Selector="local|TitleBar:isactive /template/ TextBlock#PART_Title">
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundOpacityBrush}"/>
+	</Style>
+
+	<Style Selector="local|TitleBar /template/ Border#PART_Background">
+		<Setter Property="IsHitTestVisible" Value="False" />
+	</Style>
+	<Style Selector="local|TitleBar:fullscreen /template/ Panel#PART_MouseTracker">
+		<Setter Property="Background" Value="Transparent" />
+	</Style>
+	<Style Selector="local|TitleBar:fullscreen /template/ Border#PART_Background">
+		<Setter Property="IsHitTestVisible" Value="True" />
+	</Style>
+	<Style Selector="local|TitleBar:fullscreen /template/ Panel#PART_Container">
+		<Setter Property="RenderTransform" Value="translateY(-29px)" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.25" />
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector="local|TitleBar:fullscreen:pointerover /template/ Panel#PART_Container">
+		<Setter Property="RenderTransform" Value="none" />
+	</Style>
+</Styles>

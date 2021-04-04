@@ -94,52 +94,15 @@
 	</Style>
 
 	<!-- Indeterminate Normal State -->
-	<Style Selector="CheckBox:indeterminate">
-		<Setter Property="Foreground" Value="{DynamicResource CheckBoxForegroundIndeterminate}" />
-	</Style>
-
-	<Style Selector="CheckBox:indeterminate">
-		<Setter Property="Background" Value="{DynamicResource CheckBoxBackgroundIndeterminate}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxBorderBrushIndeterminate}" />
-	</Style>
-
 	<Style Selector="CheckBox:indeterminate /template/ Border#NormalRectangle">
-		<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckBackgroundStrokeIndeterminate}" />
-		<Setter Property="Background" Value="{DynamicResource CheckBoxCheckBackgroundFillIndeterminate}" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Background" Value="{DynamicResource AccentBrush}" />
 	</Style>
 
 	<Style Selector="CheckBox:indeterminate /template/ Path#CheckGlyph">
-		<Setter Property="Fill" Value="{DynamicResource CheckBoxCheckGlyphForegroundIndeterminate}" />
+		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}" />
 		<Setter Property="Data" Value="M1536 1536v-1024h-1024v1024h1024z" />
 		<Setter Property="Width" Value="7" />
 		<Setter Property="Opacity" Value="1" />
-	</Style>
-
-	<!-- Indeterminate PointerOver State -->
-	<Style Selector="CheckBox:indeterminate:pointerover /template/ ContentPresenter#ContentPresenter">
-		<Setter Property="TextBlock.Foreground" Value="{DynamicResource CheckBoxForegroundIndeterminatePointerOver}" />
-	</Style>
-
-	<Style Selector="CheckBox:indeterminate:pointerover /template/ Border#NormalRectangle">
-		<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckBackgroundStrokeIndeterminatePointerOver}" />
-		<Setter Property="Background" Value="{DynamicResource CheckBoxCheckBackgroundFillIndeterminatePointerOver}" />
-	</Style>
-
-	<Style Selector="CheckBox:indeterminate:pointerover /template/ Path#CheckGlyph">
-		<Setter Property="Fill" Value="{DynamicResource CheckBoxCheckGlyphForegroundIndeterminatePointerOver}" />
-	</Style>
-
-	<!-- Indeterminate Pressed State -->
-	<Style Selector="CheckBox:indeterminate:pressed /template/ ContentPresenter#ContentPresenter">
-		<Setter Property="TextBlock.Foreground" Value="{DynamicResource CheckBoxForegroundIndeterminatePressed}" />
-	</Style>
-
-	<Style Selector="CheckBox:indeterminate:pressed /template/ Border#NormalRectangle">
-		<Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckBackgroundStrokeIndeterminatePressed}" />
-		<Setter Property="Background" Value="{DynamicResource CheckBoxCheckBackgroundFillIndeterminatePressed}" />
-	</Style>
-
-	<Style Selector="CheckBox:indeterminate:pressed /template/ Path#CheckGlyph">
-		<Setter Property="Fill" Value="{DynamicResource CheckBoxCheckGlyphForegroundIndeterminatePressed}" />
 	</Style>
 </Styles>

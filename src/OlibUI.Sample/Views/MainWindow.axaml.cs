@@ -8,7 +8,7 @@ namespace OlibUI.Sample.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
             Closing += (sender, args) => ((MainWindowViewModel) DataContext)?.Closing();
 
             Activated += MainWindow_Activated;
@@ -18,11 +18,6 @@ namespace OlibUI.Sample.Views
         {
             Program.sw.Stop();
             Title = Program.sw.Elapsed.ToString();
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
         }
     }
 }

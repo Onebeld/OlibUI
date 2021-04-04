@@ -1,0 +1,96 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="using:OlibUI.Controls.Chrome">
+
+	<Style Selector="local|CaptionButtons">
+		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel.Styles>
+						<Style Selector="Button">
+							<Setter Property="Width" Value="45"/>
+							<Setter Property="Height" Value="29"/>
+
+							<Setter Property="BorderThickness" Value="0"/>
+							<Setter Property="Background" Value="Transparent"/>
+						</Style>
+						<Style Selector="Button#PART_MinimizeButton > Rectangle">
+							<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+						</Style>
+						<Style Selector="Button#PART_MaximizeButton > Rectangle">
+							<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+							<Setter Property="StrokeThickness" Value="2"/>
+						</Style>
+						<Style Selector="Button:not(:pointerover):not(:pressed):disabled">
+							<Setter Property="Opacity" Value="0.5" />
+						</Style>
+						<Style Selector="Button /template/ ContentPresenter">
+							<Setter Property="CornerRadius" Value="0"/>
+						</Style>
+
+						<Style Selector="Button#PART_MaximizeButton > Rectangle">
+							<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+							<Setter Property="StrokeThickness" Value="2"/>
+						</Style>
+						<Style Selector="Button#PART_MaximizeButton Rectangle">
+							<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+							<Setter Property="StrokeThickness" Value="2"/>
+						</Style>
+						<Style Selector="Button#PART_MaximizeButton > Grid > Grid Border">
+							<Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+						</Style>
+						<Style Selector="Button#PART_MaximizeButton > Grid > Grid > Rectangle">
+							<Setter Property="Stroke" Value="Transparent"/>
+							<Setter Property="StrokeThickness" Value="0"/>
+							<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+						</Style>
+						<Style Selector="local|CaptionButtons:isactive /template/ Button:not(:pointerover):not(:pressed)">
+							<Setter Property="Foreground" Value="{DynamicResource ForegroundOpacityBrush}"/>
+						</Style>
+					</StackPanel.Styles>
+
+					<Button Name="PART_FullScreenButton">
+						<Path Stretch="UniformToFill" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Button>
+					<Button Name="PART_MinimizeButton">
+						<Rectangle Width="10" Height="2"/>
+					</Button>
+					<Button Name="PART_MaximizeButton">
+						<Grid>
+							<Rectangle Width="10" Height="10"/>
+							<Grid Width="10" Height="10">
+								<Border BorderThickness="2" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+								<Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
+									<Border BorderThickness="0 2 2 0"/>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Button>
+					<Button Name="PART_CloseButton">
+						<Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="2" Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+					</Button>
+				</StackPanel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="local|CaptionButtons:fullscreen Button#PART_MaximizeButton, local|CaptionButtons:fullscreen Button#PART_MinimizeButton">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|CaptionButtons:maximized /template/ Button#PART_MaximizeButton > Grid > Rectangle">
+		<Setter Property="IsVisible" Value="False"/>
+	</Style>
+	<Style Selector="local|CaptionButtons:normal /template/ Button#PART_MaximizeButton > Grid > Grid">
+		<Setter Property="IsVisible" Value="False"/>
+	</Style>
+	<Style Selector="local|CaptionButtons:minimized /template/ Button#PART_MaximizeButton > Grid > Grid">
+		<Setter Property="IsVisible" Value="False"/>
+	</Style>
+	<Style Selector="local|CaptionButtons /template/ Button#PART_FullScreenButton Path">
+		<Setter Property="Data" Value="M2048 2048v-819h-205v469l-1493 -1493h469v-205h-819v819h205v-469l1493 1493h-469v205h819z" />
+	</Style>
+	<Style Selector="local|CaptionButtons:fullscreen /template/ Button#PART_FullScreenButton Path">
+		<Setter Property="Data" Value="M205 1024h819v-819h-205v469l-674 -674l-145 145l674 674h-469v205zM1374 1229h469v-205h-819v819h205v-469l674 674l145 -145z" />
+	</Style>
+</Styles>

@@ -52,6 +52,8 @@
 	<StyleInclude Source="/Controls/RadioButton.axaml"/>
 	<StyleInclude Source="/Controls/Carousel.axaml"/>
 	<StyleInclude Source="/Controls/ToggleSwitch.axaml"/>
+	<StyleInclude Source="/Controls/Chrome/CaptionButtons.axaml"/>
+	<StyleInclude Source="/Controls/Chrome/TitleBar.axaml"/>
 	<!-- Controls -->
 	
 	<!-- Instruments -->

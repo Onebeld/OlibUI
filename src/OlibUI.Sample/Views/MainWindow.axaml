@@ -9,6 +9,7 @@
                  x:Class="OlibUI.Sample.Views.MainWindow"
 				 WindowStartupLocation="CenterScreen"
 				 TransparencyLevelHint="AcrylicBlur"
+				 FullScreenButton="True"
 				 WindowButtons="All"
                  Icon="/Assets/avalonia-logo.ico"
                  Title="OlibUI.Sample">
