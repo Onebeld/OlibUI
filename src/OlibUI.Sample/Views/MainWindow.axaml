@@ -146,6 +146,14 @@
 										HorizontalAlignment="Right" />
 							</DockPanel>
 							<DockPanel>
+								<TextBlock Text="Not active window border" />
+								<Button Width="30" Classes="SelectionColor"
+										Background="{Binding CustomTheme.NotActiveWindowBorderColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"
+										Command="{Binding ChangeColor}"
+										CommandParameter="{Binding $self}"
+										HorizontalAlignment="Right" />
+							</DockPanel>
+							<DockPanel>
 								<TextBlock Text="ScrollBox" />
 								<Button Width="30" Classes="SelectionColor"
 										Background="{Binding CustomTheme.ScrollBoxColor, Converter={StaticResource ColorToBrushConverter}, Mode=TwoWay}"

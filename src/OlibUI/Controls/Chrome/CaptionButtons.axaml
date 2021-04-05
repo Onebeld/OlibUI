@@ -51,7 +51,7 @@
 					</StackPanel.Styles>
 
 					<Button Name="PART_FullScreenButton">
-						<Path Stretch="UniformToFill" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<Path Stretch="UniformToFill" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="0.5" Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
 					</Button>
 					<Button Name="PART_MinimizeButton">
 						<Rectangle Width="10" Height="2"/>

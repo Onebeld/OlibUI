@@ -10,7 +10,7 @@
 		<Setter Property="WindowState" Value="{TemplateBinding WindowState}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border x:Name="PART_OuterBorder" BorderBrush="{DynamicResource WindowBorderBrush}">
+				<Border x:Name="PART_OuterBorder">
 					<Grid RowDefinitions="*,Auto">
 						<Border Classes="BorderStyle"  ZIndex="10" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2">
 							<StackPanel VerticalAlignment="Center" Margin="30 10">
@@ -32,7 +32,10 @@
 			</ControlTemplate>
 		</Setter>
 	</Style>
-
+	
+	<Style Selector="local|OlibWindow /template/ Border#PART_OuterBorder">
+		<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}"/>
+	</Style>
 	<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Border.OuterBorder">
 		<Setter Property="BorderThickness" Value="0"/>
 	</Style>
@@ -52,5 +55,8 @@
 	<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="Margin" Value="8"/>
+	</Style>
+	<Style Selector="local|OlibWindow[IsActive=False] /template/ Border#PART_OuterBorder">
+		<Setter Property="BorderBrush" Value="{DynamicResource NotActiveWindowBorderBrush}"/>
 	</Style>
 </Styles>

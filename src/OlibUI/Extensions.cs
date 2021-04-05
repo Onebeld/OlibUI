@@ -24,6 +24,7 @@ namespace OlibUI
             sb.AppendLine($"        <Color x:Key=\"BorderBackgroundColor\">{theme.BorderBackgroundColor}</Color>");
             sb.AppendLine($"        <Color x:Key=\"BorderColor\">{theme.BorderColor}</Color>");
             sb.AppendLine($"        <Color x:Key=\"WindowBorderColor\">{theme.WindowBorderColor}</Color>");
+            sb.AppendLine($"        <Color x:Key=\"NotActiveWindowBorderColor\">{theme.NotActiveWindowBorderColor}</Color>");
             sb.AppendLine($"        <Color x:Key=\"HoverScrollBoxColor\">{theme.HoverScrollBoxColor}</Color>");
             sb.AppendLine($"        <Color x:Key=\"ScrollBoxColor\">{theme.ScrollBoxColor}</Color>");
             sb.AppendLine($"        <Color x:Key=\"ErrorColor\">{theme.ErrorColor}</Color>");

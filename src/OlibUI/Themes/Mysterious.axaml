@@ -10,6 +10,7 @@
 	    <Color x:Key="BorderBackgroundColor">#FF370044</Color>
 	    <Color x:Key="BorderColor">#FF6E0086</Color>
 	    <Color x:Key="WindowBorderColor">#FF6E0086</Color>
+		<Color x:Key="NotActiveWindowBorderColor">#FF4A0059</Color>
 	    <Color x:Key="HoverScrollBoxColor">#FF83009B</Color>
 	    <Color x:Key="ScrollBoxColor">#FF77008F</Color>
 	    <Color x:Key="ErrorColor">#FFBD0000</Color>

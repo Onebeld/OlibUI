@@ -190,6 +190,7 @@ namespace OlibUI.Sample.ViewModels
                 PressedForegroundColor = (Color)Application.Current.FindResource("PressedForegroundColor"),
                 ScrollBoxColor = (Color)Application.Current.FindResource("ScrollBoxColor"),
                 WindowBorderColor = (Color)Application.Current.FindResource("WindowBorderColor"),
+                NotActiveWindowBorderColor = (Color)Application.Current.FindResource("NotActiveWindowBorderColor"),
                 HoverScrollBoxColor = (Color)Application.Current.FindResource("HoverScrollBoxColor"),
                 WindowBorderBackgroundColor = (Color)Application.Current.FindResource("WindowBorderBackgroundColor"),
             };
@@ -234,10 +235,7 @@ namespace OlibUI.Sample.ViewModels
         {
             CustomThemes.Remove(CustomTheme);
 
-            if (CustomThemes.Count == 0)
-            {
-                Theme = 0;
-            }
+            if (CustomThemes.Count == 0) Theme = 0;
         }
 
         private void CopyTheme()

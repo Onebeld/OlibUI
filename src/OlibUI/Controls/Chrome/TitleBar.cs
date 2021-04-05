@@ -131,6 +131,7 @@ namespace OlibUI.Controls.Chrome
                                 _expandMenuItem.IsEnabled = false;
                                 _collapseMenuItem.IsEnabled = false;
                             }
+                            else _collapseMenuItem.IsEnabled = true;
                         }),
                     window.GetObservable(OlibWindow.IsActiveProperty)
                         .Subscribe(x =>

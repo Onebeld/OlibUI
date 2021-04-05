@@ -11,7 +11,6 @@
 		<Description>Dynamic user interface for Avalonia</Description>
 		<PackageProjectUrl></PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Onebeld/OlibUI</RepositoryUrl>
-		<PackageReleaseNotes>First release</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 		<PackageIcon>OlibUI_icon.png</PackageIcon>
 		<PackageIconUrl />

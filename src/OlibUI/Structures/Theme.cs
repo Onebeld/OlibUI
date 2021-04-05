@@ -17,6 +17,7 @@ namespace OlibUI.Structures
         private Color _borderBackgroundColor;
         private Color _borderColor;
         private Color _windowBorderColor;
+        private Color _notActiveWindowBorderColor;
         private Color _hoverScrollBoxColor;
         private Color _scrollBoxColor;
         private Color _errorColor;
@@ -84,6 +85,12 @@ namespace OlibUI.Structures
             set => RaiseAndSetIfChanged(ref _windowBorderColor, value);
         }
         [DataMember]
+        public Color NotActiveWindowBorderColor
+        {
+            get => _notActiveWindowBorderColor;
+            set => RaiseAndSetIfChanged(ref _notActiveWindowBorderColor, value);
+        }
+        [DataMember]
         public Color HoverScrollBoxColor 
         {
             get => _hoverScrollBoxColor;
@@ -101,7 +108,6 @@ namespace OlibUI.Structures
             get => _errorColor;
             set => RaiseAndSetIfChanged(ref _errorColor, value);
         }
-
         [DataMember]
         public Color WindowBorderBackgroundColor
         {

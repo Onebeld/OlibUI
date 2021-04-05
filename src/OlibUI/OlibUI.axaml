@@ -10,6 +10,7 @@
 		<SolidColorBrush x:Key="BorderBackgroundBrush" Color="{DynamicResource BorderBackgroundColor}"/>
 		<SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}"/>
 		<SolidColorBrush x:Key="WindowBorderBrush" Color="{DynamicResource WindowBorderColor}"/>
+		<SolidColorBrush x:Key="NotActiveWindowBorderBrush" Color="{DynamicResource NotActiveWindowBorderColor}"/>
 		<SolidColorBrush x:Key="HoverScrollBoxBrush" Color="{DynamicResource HoverScrollBoxColor}"/>
 		<SolidColorBrush x:Key="ScrollBoxBrush" Color="{DynamicResource ScrollBoxColor}"/>
 		<SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
