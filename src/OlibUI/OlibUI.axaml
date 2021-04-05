@@ -21,6 +21,8 @@
 	<StyleInclude Source="/Windows/OlibWindow.axaml"/>
 	<!-- Windows -->
 	
+	<StyleInclude Source="/Assets/Images.axaml"/>
+	
 	<!-- Controls -->
 	<StyleInclude Source="/Controls/Button.axaml"/>
 	<StyleInclude Source="/Controls/Menu.axaml"/>

@@ -12,15 +12,16 @@
 			<ControlTemplate>
 				<Border x:Name="PART_OuterBorder">
 					<Grid RowDefinitions="*,Auto">
-						<Border Classes="BorderStyle"  ZIndex="10" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2">
-							<StackPanel VerticalAlignment="Center" Margin="30 10">
-								<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
-								<ProgressBar Value="{TemplateBinding ProgressLoad}" Maximum="100" IsIndeterminate="{TemplateBinding IsIndeterminate}"/>
-							</StackPanel>
+						<Border x:Name="PART_Loading" ZIndex="5" Background="#3A000000" IsVisible="{TemplateBinding InLoadMode}">
+							<Border Classes="BorderStyle" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<StackPanel VerticalAlignment="Center" Margin="30 10">
+									<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
+									<ProgressBar Value="{TemplateBinding ProgressLoad}" Maximum="100" IsIndeterminate="{TemplateBinding IsIndeterminate}"/>
+								</StackPanel>
+							</Border>
 						</Border>
-						<Border ZIndex="5" Grid.Row="1" Grid.RowSpan="2" Opacity="0.2" IsVisible="{TemplateBinding InLoadMode}" Background="Black"/>
 
-						<olib:TitleBar ZIndex="1" x:Name="PART_TitleBar" VerticalAlignment="Top"/>
+						<olib:TitleBar ZIndex="10" x:Name="PART_TitleBar" VerticalAlignment="Top"/>
 
 						<ContentPresenter x:Name="PART_ContentWindow" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}"/>
 
@@ -32,7 +33,7 @@
 			</ControlTemplate>
 		</Setter>
 	</Style>
-	
+
 	<Style Selector="local|OlibWindow /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}"/>
 	</Style>
