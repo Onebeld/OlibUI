@@ -55,12 +55,18 @@
 	<StyleInclude Source="/Controls/RadioButton.axaml"/>
 	<StyleInclude Source="/Controls/Carousel.axaml"/>
 	<StyleInclude Source="/Controls/ToggleSwitch.axaml"/>
-	<StyleInclude Source="/Controls/Chrome/CaptionButtons.axaml"/>
-	<StyleInclude Source="/Controls/Chrome/TitleBar.axaml"/>
+	<StyleInclude Source="/Controls/SplitView.axaml"/>
+	<StyleInclude Source="/Controls/Chrome/OlibCaptionButtons.axaml"/>
+	<StyleInclude Source="/Controls/Chrome/OlibTitleBar.axaml"/>
 	<!-- Controls -->
 	
 	<!-- Instruments -->
 	<StyleInclude Source="/Instruments/ColorPicker.axaml"/>
+	<StyleInclude Source="/Instruments/StatusBar.axaml"/>
+	<StyleInclude Source="/Instruments/StatusBarItem.axaml"/>
+	
+	<StyleInclude Source="/Instruments/NavigationView/NavigationView.axaml"/>
+	<StyleInclude Source="/Instruments/NavigationView/NavigationViewItem.axaml"/>
 	<!-- Instruments -->
 
 	<Style Selector="Border.BorderStyle">

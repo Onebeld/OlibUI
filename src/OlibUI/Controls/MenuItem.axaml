@@ -75,12 +75,9 @@
 						   PlacementMode="Right"
 						   OverlayInputPassThroughElement="{Binding $parent[MenuItem]}"
 						   HorizontalOffset="{DynamicResource MenuFlyoutSubItemPopupHorizontalOffset}"
-						   IsLightDismissEnabled="True"
+						   StaysOpen="False"
 						   IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
-						<Border Background="{DynamicResource BackgroundBrush}"
-								BorderBrush="{DynamicResource BorderBrush}"
-								BorderThickness="1"
-								Padding="2"
+						<Border Padding="2"
 								MaxWidth="{DynamicResource FlyoutThemeMaxWidth}"
 								MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"
 								HorizontalAlignment="Stretch">
@@ -123,12 +120,10 @@
 							   WindowManagerAddShadowHint="False"
 							   MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
 							   IsLightDismissEnabled="True"
+							   StaysOpen="False"
 							   IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
 							   OverlayInputPassThroughElement="{Binding $parent[Menu]}">
-							<Border Background="{DynamicResource BackgroundBrush}"
-									BorderBrush="{DynamicResource BorderBrush}"
-									BorderThickness="1"
-									Padding="2"
+							<Border Padding="2"
 									HorizontalAlignment="Stretch">
 								<ScrollViewer Classes="menuscroller">
 									<ItemsPresenter Name="PART_ItemsPresenter"

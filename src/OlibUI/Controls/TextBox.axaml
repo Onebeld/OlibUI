@@ -6,6 +6,7 @@
 		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
 		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="MinHeight" Value="18"/>
 		<Setter Property="SelectionBrush" Value="{DynamicResource HoverBackgroundBrush}"/>
 		<Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}"/>
 		<Setter Property="Padding" Value="4 0"/>

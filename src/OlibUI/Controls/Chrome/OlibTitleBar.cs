@@ -12,10 +12,10 @@ using System.Reactive.Disposables;
 namespace OlibUI.Controls.Chrome
 {
     [PseudoClasses(":minimized", ":normal", ":maximized", ":fullscreen", ":isactive")]
-    public class TitleBar : TemplatedControl
+    public class OlibTitleBar : TemplatedControl
     {
         private CompositeDisposable _disposables;
-        private CaptionButtons _captionButtons;
+        private OlibCaptionButtons _captionButtons;
         private Image _image;
         private TextBlock _title;
         private Avalonia.Controls.Shapes.Path _textIcon;
@@ -58,7 +58,7 @@ namespace OlibUI.Controls.Chrome
 
             _captionButtons?.Detach();
 
-            _captionButtons = e.NameScope.Get<CaptionButtons>("PART_CaptionButtons");
+            _captionButtons = e.NameScope.Get<OlibCaptionButtons>("PART_CaptionButtons");
             _image = e.NameScope.Get<Image>("PART_Icon");
             _title = e.NameScope.Get<TextBlock>("PART_Title");
             _textIcon = e.NameScope.Get<Avalonia.Controls.Shapes.Path>("PART_TextIcon");
@@ -149,7 +149,7 @@ namespace OlibUI.Controls.Chrome
                         .Subscribe(x =>
                         {
                             _textIcon.Data = x;
-                            _textIcon.IsVisible = _textIcon.Data == null ? false : true;
+                            _textIcon.IsVisible = _textIcon.Data != null;
                             _title.IsVisible = _textIcon.Data == null ? true : false;
                         }),
                     window.GetObservable(OlibWindow.TitleBarMenuProperty)
@@ -160,33 +160,32 @@ namespace OlibUI.Controls.Chrome
                     window.GetObservable(OlibWindow.WindowButtonsProperty)
                         .Subscribe(x =>
                         {
-                            if (x == WindowButtons.All)
+                            switch (x)
                             {
-                                _expandMenuItem.IsVisible = true;
-                                _reestablishMenuItem.IsVisible = true;
-                                _collapseMenuItem.IsVisible = true;
-                                _separator.IsVisible = true;
-                            }
-                            else if (x == WindowButtons.CloseAndCollapse)
-                            {
-                                _expandMenuItem.IsVisible = false;
-                                _reestablishMenuItem.IsVisible = false;
-                                _collapseMenuItem.IsVisible = true;
-                                _separator.IsVisible = true;
-                            }
-                            else if (x == WindowButtons.CloseAndExpand)
-                            {
-                                _expandMenuItem.IsVisible = true;
-                                _reestablishMenuItem.IsVisible = true;
-                                _collapseMenuItem.IsVisible = false;
-                                _separator.IsVisible = true;
-                            }
-                            else if (x == WindowButtons.Close)
-                            {
-                                _expandMenuItem.IsVisible = false;
-                                _reestablishMenuItem.IsVisible = false;
-                                _collapseMenuItem.IsVisible = false;
-                                _separator.IsVisible = false;
+                                case WindowButtons.All:
+                                    _expandMenuItem.IsVisible = true;
+                                    _reestablishMenuItem.IsVisible = true;
+                                    _collapseMenuItem.IsVisible = true;
+                                    _separator.IsVisible = true;
+                                    break;
+                                case WindowButtons.CloseAndCollapse:
+                                    _expandMenuItem.IsVisible = false;
+                                    _reestablishMenuItem.IsVisible = false;
+                                    _collapseMenuItem.IsVisible = true;
+                                    _separator.IsVisible = true;
+                                    break;
+                                case WindowButtons.CloseAndExpand:
+                                    _expandMenuItem.IsVisible = true;
+                                    _reestablishMenuItem.IsVisible = true;
+                                    _collapseMenuItem.IsVisible = false;
+                                    _separator.IsVisible = true;
+                                    break;
+                                default:
+                                    _expandMenuItem.IsVisible = false;
+                                    _reestablishMenuItem.IsVisible = false;
+                                    _collapseMenuItem.IsVisible = false;
+                                    _separator.IsVisible = false;
+                                    break;
                             }
                         })
                 };

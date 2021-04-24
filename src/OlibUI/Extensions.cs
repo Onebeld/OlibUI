@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
+using Avalonia;
+using Avalonia.Controls.Primitives;
+using Avalonia.LogicalTree;
 using Avalonia.Media;
 using OlibUI.Structures;
 
@@ -34,5 +38,7 @@ namespace OlibUI
 
             return sb.ToString();
         }
+
+        public static T GetParentTOfLogical<T>(this ILogical logical) where T : class => logical.GetSelfAndLogicalAncestors().OfType<T>().FirstOrDefault<T>();
     }
 }

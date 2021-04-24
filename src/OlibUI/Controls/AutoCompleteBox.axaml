@@ -28,7 +28,7 @@
 		<Setter Property="MaxDropDownHeight" Value="{DynamicResource AutoCompleteListMaxHeight}" />
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Grid Name="PART_LayoutRoot">
+				<Grid Name="PART_LayoutRoot" IsVisible="{TemplateBinding IsVisible}">
 					<TextBox Name="PART_TextBox"
 							 Watermark="{TemplateBinding Watermark}"
 							 Width="{TemplateBinding Width}"

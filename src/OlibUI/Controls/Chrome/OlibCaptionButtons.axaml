@@ -1,0 +1,66 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector="OlibCaptionButtons">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel.Styles>
+						<Style Selector="Button">
+							<Setter Property="Width" Value="45"/>
+
+							<Setter Property="BorderThickness" Value="0"/>
+							<Setter Property="Background" Value="Transparent"/>
+						</Style>
+						<Style Selector="Button:not(:pointerover):not(:pressed):disabled">
+							<Setter Property="Opacity" Value="0.5" />
+						</Style>
+						<Style Selector="Button /template/ ContentPresenter">
+							<Setter Property="CornerRadius" Value="0"/>
+						</Style>
+
+						<Style Selector="OlibCaptionButtons:isactive /template/ Button:not(:pointerover):not(:pressed)">
+							<Setter Property="Foreground" Value="{DynamicResource ForegroundOpacityBrush}"/>
+						</Style>
+					</StackPanel.Styles>
+
+					<Button Name="PART_FullScreenButton" ToolTip.Tip="{DynamicResource Fullscreen}">
+						<Path Width="12" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="0.5" Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+					</Button>
+					<Button Name="PART_MinimizeButton" ToolTip.Tip="{DynamicResource Collapse}">
+						<Path Data="{StaticResource MinimizeIcon}" Width="12" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Button>
+					<Button Name="PART_MaximizeButton">
+						<Path Stretch="Uniform" Width="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Button>
+					<Button Name="PART_CloseButton" ToolTip.Tip="{DynamicResource Close}">
+						<Path Data="{StaticResource CloseIcon}" Stretch="Uniform" Width="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Button>
+				</StackPanel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="OlibCaptionButtons:fullscreen Button#PART_MaximizeButton, OlibCaptionButtons:fullscreen Button#PART_MinimizeButton">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	
+	<Style Selector="OlibCaptionButtons /template/ Button#PART_MaximizeButton > Path">
+		<Setter Property="Data" Value="{StaticResource ExpandIcon}"/>
+	</Style>
+	<Style Selector="OlibCaptionButtons:maximized /template/ Button#PART_MaximizeButton > Path">
+		<Setter Property="Data" Value="{StaticResource ReestablishIcon}"/>
+	</Style>
+	<Style Selector="OlibCaptionButtons /template/ Button#PART_MaximizeButton">
+		<Setter Property="ToolTip.Tip" Value="{DynamicResource Expand}"/>
+	</Style>
+	<Style Selector="OlibCaptionButtons:maximized /template/ Button#PART_MaximizeButton">
+		<Setter Property="ToolTip.Tip" Value="{DynamicResource Reestablish}"/>
+	</Style>
+	
+	<Style Selector="OlibCaptionButtons /template/ Button#PART_FullScreenButton Path">
+		<Setter Property="Data" Value="M2048 2048v-819h-205v469l-1493 -1493h469v-205h-819v819h205v-469l1493 1493h-469v205h819z" />
+	</Style>
+	<Style Selector="OlibCaptionButtons:fullscreen /template/ Button#PART_FullScreenButton Path">
+		<Setter Property="Data" Value="M205 1024h819v-819h-205v469l-674 -674l-145 145l674 674h-469v205zM1374 1229h469v-205h-819v819h205v-469l674 674l145 -145z" />
+	</Style>
+</Styles>

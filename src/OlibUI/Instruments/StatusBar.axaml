@@ -1,0 +1,18 @@
+﻿<Style xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:local="using:OlibUI.Instruments"
+	   Selector="local|StatusBar">
+	<Setter Property="Template">
+		<ControlTemplate>
+			<Border BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}"
+					Background="{TemplateBinding Background}"
+					Padding="{TemplateBinding Padding}">
+				<ItemsPresenter Name="PART_ItemsRepeater"
+							    Items="{TemplateBinding Items}"
+								ItemsPanel="{TemplateBinding ItemsPanel}"
+							    ItemTemplate="{TemplateBinding ItemTemplate}"/>
+			</Border>
+		</ControlTemplate>
+	</Setter>
+</Style>

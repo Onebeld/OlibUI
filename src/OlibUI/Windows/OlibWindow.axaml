@@ -1,18 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:olib="using:OlibUI.Controls.Chrome"
-		xmlns:local="using:OlibUI.Windows">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-	<Style Selector="local|OlibWindow">
+	<Style Selector="OlibWindow">
 		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
 		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-		<Setter Property="WindowState" Value="{TemplateBinding WindowState}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Border x:Name="PART_OuterBorder">
 					<Grid RowDefinitions="*,Auto">
-						<Border x:Name="PART_Loading" ZIndex="5" Background="#3A000000" IsVisible="{TemplateBinding InLoadMode}">
+						<Border x:Name="PART_Loading" Grid.RowSpan="2" ZIndex="5" Background="#3A000000" IsVisible="{TemplateBinding InLoadMode}">
 							<Border Classes="BorderStyle" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center">
 								<StackPanel VerticalAlignment="Center" Margin="30 10">
 									<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
@@ -21,11 +17,11 @@
 							</Border>
 						</Border>
 
-						<olib:TitleBar ZIndex="10" x:Name="PART_TitleBar" VerticalAlignment="Top"/>
+						<OlibTitleBar ZIndex="10" x:Name="PART_TitleBar" VerticalAlignment="Top" Height="30"/>
 
 						<ContentPresenter x:Name="PART_ContentWindow" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}"/>
 
-						<Border Grid.Row="1" Name="BottomBorder" Height="50" Classes="Panel" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource WindowBorderBackgroundBrush}" VerticalAlignment="Bottom">
+						<Border Grid.Row="1" Name="BottomBorder" Height="50" Classes="Panel" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource WindowBorderBackgroundBrush}">
 							<ContentPresenter Content="{TemplateBinding BottomPanel}" Margin="10"/>
 						</Border>
 					</Grid>
@@ -34,30 +30,27 @@
 		</Setter>
 	</Style>
 
-	<Style Selector="local|OlibWindow /template/ Border#PART_OuterBorder">
+	<Style Selector="OlibWindow /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}"/>
 	</Style>
-	<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Border.OuterBorder">
+	<Style Selector="OlibWindow[WindowState=Maximized] /template/ Border.OuterBorder">
 		<Setter Property="BorderThickness" Value="0"/>
 	</Style>
-	<Style Selector="local|OlibWindow /template/ ContentPresenter#PART_ContentWindow">
-		<Setter Property="Margin" Value="0 30 0 0"/>
-	</Style>
-	<Style Selector="local|OlibWindow[WindowState=FullScreen] /template/ ContentPresenter#PART_ContentWindow">
+	<Style Selector="OlibWindow[WindowState=FullScreen] /template/ ContentPresenter#PART_ContentWindow">
 		<Setter Property="Margin" Value="0"/>
 	</Style>
-	<Style Selector="local|OlibWindow /template/ Border#PART_OuterBorder">
+	<Style Selector="OlibWindow /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderThickness" Value="1"/>
 	</Style>
 
-	<Style Selector="local|OlibWindow[WindowState=FullScreen] /template/ Border#PART_OuterBorder">
+	<Style Selector="OlibWindow[WindowState=FullScreen] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderThickness" Value="1 0 1 1"/>
 	</Style>
-	<Style Selector="local|OlibWindow[WindowState=Maximized] /template/ Border#PART_OuterBorder">
+	<Style Selector="OlibWindow[WindowState=Maximized] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="Margin" Value="8"/>
 	</Style>
-	<Style Selector="local|OlibWindow[IsActive=False] /template/ Border#PART_OuterBorder">
+	<Style Selector="OlibWindow[IsActive=False] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderBrush" Value="{DynamicResource NotActiveWindowBorderBrush}"/>
 	</Style>
 </Styles>

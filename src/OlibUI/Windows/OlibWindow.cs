@@ -1,9 +1,12 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Styling;
+using OlibUI.Controls.Chrome;
 using System;
 
 namespace OlibUI.Windows
@@ -31,12 +34,16 @@ namespace OlibUI.Windows
             AvaloniaProperty.Register<OlibWindow, bool>(nameof(IsIndeterminate));
         public static readonly StyledProperty<Geometry> TextIconProperty =
             AvaloniaProperty.Register<OlibWindow, Geometry>(nameof(TextIcon));
-        public static readonly StyledProperty<int> ProgressLoadProperty = 
+        public static readonly StyledProperty<int> ProgressLoadProperty =
             AvaloniaProperty.Register<OlibWindow, int>(nameof(ProgressLoad));
-        public static readonly StyledProperty<string> ProgressTextProperty = 
+        public static readonly StyledProperty<string> ProgressTextProperty =
             AvaloniaProperty.Register<OlibWindow, string>(nameof(ProgressText));
         public static readonly StyledProperty<bool> FullScreenButtonProperty =
             AvaloniaProperty.Register<OlibWindow, bool>(nameof(FullScreenButton));
+        public static readonly StyledProperty<bool> CompactModeProperty =
+            AvaloniaProperty.Register<OlibWindow, bool>(nameof(CompactMode));
+        public static readonly RoutedEvent<RoutedEventArgs> InteractingWithWindowEvent =
+            RoutedEvent.Register<OlibWindow, RoutedEventArgs>(nameof(InteractingWithWindow), RoutingStrategies.Bubble);
 
         /// <summary>
         /// Shows or hides the Expand and Collapse buttons
@@ -86,6 +93,12 @@ namespace OlibUI.Windows
             set => SetValue(IsIndeterminateProperty, value);
         }
 
+        public bool CompactMode
+        {
+            get => GetValue(CompactModeProperty);
+            set => SetValue(CompactModeProperty, value);
+        }
+
         /// <summary>
         /// Required if the logo is drawn in vector graphics
         /// </summary>
@@ -107,11 +120,23 @@ namespace OlibUI.Windows
             set => SetValue(ProgressTextProperty, value);
         }
 
-        static OlibWindow() { }
+        public event EventHandler<RoutedEventArgs> InteractingWithWindow
+        {
+            add { AddHandler(InteractingWithWindowEvent, value); }
+            remove { RemoveHandler(InteractingWithWindowEvent, value); }
+        }
+
+        public OlibWindow() { }
 
         Type IStyleable.StyleKey => typeof(OlibWindow);
 
-        T GetControl<T>(TemplateAppliedEventArgs e, string name) where T : class => e.NameScope.Get<T>(name);
+        protected virtual void OnInteractingWithWindow()
+        {
+            RoutedEventArgs e = new RoutedEventArgs(InteractingWithWindowEvent);
+            RaiseEvent(e);
+
+            e.Handled = true;;
+        }
 
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
@@ -125,6 +150,25 @@ namespace OlibUI.Windows
 
             SizeToContent = content;
 
+            this.GetObservable(CompactModeProperty).Subscribe(x =>
+            {
+                e.NameScope.Get<OlibTitleBar>("PART_TitleBar").Height = x ? 23 : 30;
+                if (WindowState != WindowState.FullScreen)
+                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = x ? Thickness.Parse("0 23 0 0") : Thickness.Parse("0 30 0 0");
+                else e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = Thickness.Parse("0");
+            });
+            this.GetObservable(WindowStateProperty).Subscribe(x =>
+            {
+                if (x == WindowState.FullScreen)
+                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = Thickness.Parse("0");
+                else
+                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = CompactMode ? Thickness.Parse("0 23 0 0") : Thickness.Parse("0 30 0 0");
+
+                OnInteractingWithWindow();
+            });
+
+            PositionChanged += (_, e1) => OnInteractingWithWindow();
+
             try
             {
                 KeyDown += (s, ep) =>
@@ -133,7 +177,7 @@ namespace OlibUI.Windows
                 };
 
                 if (BottomPanel == null)
-                    GetControl<Border>(e, "BottomBorder").IsVisible = false;
+                    e.NameScope.Get<Border>("BottomBorder").IsVisible = false;
             }
             catch { }
         }

@@ -2,7 +2,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style.Resources>
 	    <Color x:Key="BackgroundColor">#FF9AE2DE</Color>
-	    <Color x:Key="HoverBackgroundColor">#FFC1E9EA</Color>
+	    <Color x:Key="HoverBackgroundColor">#FF78C3BE</Color>
 	    <Color x:Key="ForegroundColor">#FF000000</Color>
 	    <Color x:Key="ForegroundOpacityColor">#FF5E3B82</Color>
 	    <Color x:Key="PressedForegroundColor">#FFFFFFFF</Color>
@@ -10,10 +10,10 @@
 	    <Color x:Key="BorderBackgroundColor">#FFD2FEFF</Color>
 	    <Color x:Key="BorderColor">#FF679593</Color>
 	    <Color x:Key="WindowBorderColor">#FF679593</Color>
-		<Color x:Key="NotActiveWindowBorderColor">#FF405D5C</Color>
-	    <Color x:Key="HoverScrollBoxColor">#FFA8F5F1</Color>
-	    <Color x:Key="ScrollBoxColor">#FFA3EDE9</Color>
+		<Color x:Key="NotActiveWindowBorderColor">#FF8AC9C7</Color>
+	    <Color x:Key="HoverScrollBoxColor">#FF1D6C68</Color>
+	    <Color x:Key="ScrollBoxColor">#FF238A85</Color>
 	    <Color x:Key="ErrorColor">#FFBD0000</Color>
-	    <Color x:Key="WindowBorderBackgroundColor">#CCD2FEFF</Color>
+	    <Color x:Key="WindowBorderBackgroundColor">#CCABFEFF</Color>
     </Style.Resources>
 </Style>

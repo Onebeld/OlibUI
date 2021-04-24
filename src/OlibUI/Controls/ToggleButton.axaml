@@ -7,6 +7,7 @@
 		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
 		<Setter Property="Padding" Value="2"/>
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="RenderTransform" Value="none" />
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
 			<ControlTemplate>
@@ -23,25 +24,24 @@
 								  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
 			</ControlTemplate>
 		</Setter>
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+			</Transitions>
+		</Setter>
 	</Style>
 
 	<Style Selector="ToggleButton:pointerover /template/ ContentPresenter">
-		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
 	</Style>
 	<Style Selector="ToggleButton:pressed  /template/ ContentPresenter">
 		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
 	</Style>
 	<Style Selector="ToggleButton > Path">
-		<Setter Property="Fill" Value="{DynamicResource ForegroundBrush}"/>
-	</Style>
-	<Style Selector="ToggleButton:checked > Path">
-		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+		<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
 	</Style>
 	<Style Selector="ToggleButton:checked">
 		<Setter Property="Foreground" Value="{DynamicResource PressedForegroundBrush}"/>
-	</Style>
-	<Style Selector="ToggleButton:pressed > Path">
-		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
 	</Style>
 	<Style Selector="ToggleButton:pressed">
 		<Setter Property="Foreground" Value="White"/>

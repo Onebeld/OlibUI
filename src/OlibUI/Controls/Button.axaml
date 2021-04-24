@@ -1,10 +1,12 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:transitions="using:OlibUI.Transitions">
 	<Style Selector="Button">
 		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+		<Setter Property="MinHeight" Value="18"/>
 		<Setter Property="Padding" Value="10 5"/>
 		<Setter Property="RenderTransform" Value="none" />
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -42,10 +44,7 @@
 		<Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
 	</Style>
 	<Style Selector="Button > Path">
-		<Setter Property="Fill" Value="{DynamicResource ForegroundBrush}"/>
-	</Style>
-	<Style Selector="Button:pressed > Path">
-		<Setter Property="Fill" Value="{DynamicResource PressedForegroundBrush}"/>
+		<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
 	</Style>
 	<Style Selector="Button:pressed">
 		<Setter Property="Foreground" Value="{DynamicResource PressedForegroundBrush}"/>

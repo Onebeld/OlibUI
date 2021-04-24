@@ -14,12 +14,17 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using OlibUI.Sample.Views.Windows;
+using System.Collections.Generic;
 
 namespace OlibUI.Sample.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
         private int _theme;
+
+        private bool _openedPopup;
+        private bool _compactMode;
+        private bool _showFullscreenButton;
 
         private ObservableCollection<Theme> _customThemes = new ObservableCollection<Theme>();
 
@@ -85,8 +90,27 @@ namespace OlibUI.Sample.ViewModels
 
                 Program.Settings.Theme = value.Name;
 
-                Application.Current.Styles[1] = AvaloniaRuntimeXamlLoader.Parse<IStyle>(CustomTheme.ToAxaml());
+                IStyle style = AvaloniaRuntimeXamlLoader.Parse<IStyle>(CustomTheme.ToAxaml());
+                Application.Current.Styles[1] = style;
             }
+        }
+
+        private bool OpenedPopup
+        {
+            get => _openedPopup;
+            set => RaiseAndSetIfChanged(ref _openedPopup, value);
+        }
+
+        private bool CompactMode
+        {
+            get => _compactMode;
+            set => RaiseAndSetIfChanged(ref _compactMode, value);
+        }
+
+        private bool ShowFullscreenButton
+        {
+            get => _showFullscreenButton;
+            set => RaiseAndSetIfChanged(ref _showFullscreenButton, value);
         }
 
         #endregion
@@ -103,6 +127,9 @@ namespace OlibUI.Sample.ViewModels
 
         private void Initialize()
         {
+            CompactMode = Program.Settings.CompactMode;
+            ShowFullscreenButton = Program.Settings.ShowFullscreenButton;
+
             LoadThemes();
 
             switch (Program.Settings.Theme)
@@ -157,6 +184,9 @@ namespace OlibUI.Sample.ViewModels
 
             if (CustomTheme != null)
                 Program.Settings.Theme = CustomTheme.Name;
+
+            Program.Settings.CompactMode = CompactMode;
+            Program.Settings.ShowFullscreenButton = ShowFullscreenButton;
 
             FileSettings.SaveSettings();
         }
@@ -257,7 +287,7 @@ namespace OlibUI.Sample.ViewModels
 
         private void CopyColor(Button button)
         {
-            Application.Current.Clipboard.SetTextAsync(((SolidColorBrush)button.Background).Color.ToString());
+            Application.Current.Clipboard.SetTextAsync(((SolidColorBrush)button.Background).Color.ToString().ToUpper());
         }
 
         private async void PasteColor(Button button)
@@ -269,6 +299,19 @@ namespace OlibUI.Sample.ViewModels
                 button.Background = new SolidColorBrush(ColorHelpers.FromHexColor(copingColor));
                 Application.Current.Styles[1] = AvaloniaRuntimeXamlLoader.Parse<IStyle>(CustomTheme.ToAxaml());
             }
+        }
+
+        ////////////////////////////////////////////
+    
+        private void ShowMessageBox()
+        {
+            MessageBox.Show(Program.MainWindow, "MessageBox", "I am MessageBox!", new List<MessageBoxButton>
+            {
+                new MessageBoxButton
+                {
+                    Text = "OK", Result = "OK", IsKeyDown = true
+                }
+            }, MessageBox.MessageBoxIcon.Information);
         }
     }
 }

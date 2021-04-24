@@ -8,12 +8,12 @@
         <Color x:Key="PressedForegroundColor">#FFFFFFFF</Color>
         <Color x:Key="AccentColor">#FF931D60</Color>
         <Color x:Key="BorderBackgroundColor">#FFEDEDED</Color>
-        <Color x:Key="BorderColor">#FFA5A5A5</Color>
-        <Color x:Key="WindowBorderColor">#FFA5A5A5</Color>
-	    <Color x:Key="NotActiveWindowBorderColor">#FF545454</Color>
+        <Color x:Key="BorderColor">#FF9A9A9A</Color>
+        <Color x:Key="WindowBorderColor">#FF9A9A9A</Color>
+	    <Color x:Key="NotActiveWindowBorderColor">#FFCACACA</Color>
         <Color x:Key="HoverScrollBoxColor">#FF8C8C8C</Color>
         <Color x:Key="ScrollBoxColor">#FFA1A1A1</Color>
         <Color x:Key="ErrorColor">#FFBD0000</Color>
-        <Color x:Key="WindowBorderBackgroundColor">#CCC6C6C6</Color>
+        <Color x:Key="WindowBorderBackgroundColor">#CCF1F1F1</Color>
     </Style.Resources>
 </Style>

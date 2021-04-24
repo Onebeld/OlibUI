@@ -9,7 +9,7 @@ using System.Reactive.Disposables;
 namespace OlibUI.Controls.Chrome
 {
     [PseudoClasses(":minimized", ":normal", ":maximized", ":fullscreen", ":isactive")]
-    public class CaptionButtons : TemplatedControl
+    public class OlibCaptionButtons : TemplatedControl
     {
         public OlibWindow HostWindow;
         private CompositeDisposable _disposables;

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>2.1.1</Version>
+		<Version>2.2.0</Version>
 		<Authors>Dmitry Zhutkov (Onebeld)</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -14,6 +14,7 @@
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 		<PackageIcon>OlibUI_icon.png</PackageIcon>
 		<PackageIconUrl />
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="0.10.0" />
@@ -25,6 +26,9 @@
 		<AvaloniaResource Include="Instruments\**" />
 		<AvaloniaResource Include="Windows\OlibWindow.axaml" />
 		<AvaloniaResource Include="Local\**" />
+		<AvaloniaXaml Remove="Controls\SplitView.axaml" />
+		<AvaloniaXaml Remove="Instruments\NavigationView\NavigationView.axaml" />
+		<AvaloniaXaml Remove="Instruments\NavigationView\NavigationViewItem.axaml" />
 		<AvaloniaResource Include="OlibUI.axaml" />
 	</ItemGroup>
 	<ItemGroup>

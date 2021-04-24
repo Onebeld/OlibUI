@@ -1,0 +1,21 @@
+﻿<Style xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:local="using:OlibUI.Instruments"
+	   Selector="local|StatusBarItem">
+	<Setter Property="Background" Value="Transparent"/>
+	<Setter Property="HorizontalContentAlignment" Value="Left"/>
+	<Setter Property="VerticalContentAlignment" Value="Center"/>
+	<Setter Property="Template">
+		<ControlTemplate>
+			<ContentPresenter Name="PART_ContentPresenter"
+							  Background="{TemplateBinding Background}"
+							  BorderBrush="{TemplateBinding BorderBrush}"
+							  BorderThickness="{TemplateBinding BorderThickness}"
+							  ContentTemplate="{TemplateBinding ContentTemplate}"
+							  Content="{TemplateBinding Content}"
+							  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+							  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+							  Padding="{TemplateBinding Padding}"/>
+		</ControlTemplate>
+	</Setter>
+</Style>

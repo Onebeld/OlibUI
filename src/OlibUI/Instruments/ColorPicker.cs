@@ -770,7 +770,7 @@ namespace OlibUI.Instruments
 
         protected virtual void OnChangeColor()
         {
-            var e = new RoutedEventArgs(ChangeColorEvent);
+            RoutedEventArgs e = new RoutedEventArgs(ChangeColorEvent);
             RaiseEvent(e);
 
             e.Handled = true;
