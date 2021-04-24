@@ -27,6 +27,8 @@
 		<v:String x:Key="NoName">No name</v:String>
 		<v:String x:Key="ChooseColor">Choose color</v:String>
 		
+		<v:String x:Key="Search">Search</v:String>
+		
 		<v:String x:Key="Cancel">Cancel</v:String>
 		<v:String x:Key="OK">OK</v:String>
 	</Style.Resources>

@@ -1,6 +1,5 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:transitions="using:OlibUI.Transitions">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Style Selector="Button">
 		<Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
 		<Setter Property="BorderThickness" Value="1"/>
@@ -8,7 +7,6 @@
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
 		<Setter Property="MinHeight" Value="18"/>
 		<Setter Property="Padding" Value="10 5"/>
-		<Setter Property="RenderTransform" Value="none" />
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
 			<ControlTemplate>

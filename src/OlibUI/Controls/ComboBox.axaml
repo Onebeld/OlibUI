@@ -36,13 +36,12 @@
 									  Focusable="False"
 									  IsChecked="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
 									  Grid.Column="1">
-							<Path
-								  Width="8"
+							<Path Width="8"
 								  Height="4"
 								  Stretch="UniformToFill"
 								  HorizontalAlignment="Center"
 								  VerticalAlignment="Center"
-								  Data="M1939 486L2029 576L1024 1581L19 576L109 486L1024 1401L1939 486Z" />
+								  Data="{StaticResource ArrowDownIcon}" />
 						</ToggleButton>
 						<Popup Name="PART_Popup"
 							   IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"

@@ -8,10 +8,18 @@
 			<ControlTemplate>
 				<Border x:Name="PART_OuterBorder">
 					<Grid RowDefinitions="*,Auto">
+						<Panel x:Name="PART_BackBlur" Background="Black">
+							<Panel.Transitions>
+								<Transitions>
+									<DoubleTransition Property="Opacity" Duration="0:0:0.05" />
+								</Transitions>
+							</Panel.Transitions>
+						</Panel>
+
 						<Border x:Name="PART_Loading" Grid.RowSpan="2" ZIndex="5" Background="#3A000000" IsVisible="{TemplateBinding InLoadMode}">
 							<Border Classes="BorderStyle" IsVisible="{TemplateBinding InLoadMode}" VerticalAlignment="Center" HorizontalAlignment="Center">
 								<StackPanel VerticalAlignment="Center" Margin="30 10">
-									<TextBlock Text="{TemplateBinding ProgressText}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
+									<TextBlock Text="{TemplateBinding ProgressText}" IsVisible="{Binding $self.Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0 0 0 5" TextWrapping="Wrap"/>
 									<ProgressBar Value="{TemplateBinding ProgressLoad}" Maximum="100" IsIndeterminate="{TemplateBinding IsIndeterminate}"/>
 								</StackPanel>
 							</Border>
@@ -52,5 +60,15 @@
 	</Style>
 	<Style Selector="OlibWindow[IsActive=False] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderBrush" Value="{DynamicResource NotActiveWindowBorderBrush}"/>
+	</Style>
+	
+	<Style Selector="OlibWindow[EnableBlur=True] /template/ Panel#PART_BackBlur">
+		<Setter Property="Opacity" Value="0"/>
+	</Style>
+	<Style Selector="OlibWindow[EnableBlur=False] /template/ Panel#PART_BackBlur">
+		<Setter Property="Opacity" Value="1"/>
+	</Style>
+	<Style Selector="OlibWindow[EnableBlur=True][IsActive=False] /template/ Panel#PART_BackBlur">
+		<Setter Property="Opacity" Value="1"/>
 	</Style>
 </Styles>

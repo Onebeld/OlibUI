@@ -49,16 +49,11 @@
 						   MaxHeight="{TemplateBinding MaxDropDownHeight}"
 						   IsLightDismissEnabled="True"
 						   PlacementTarget="{TemplateBinding}">
-						<Border Name="PART_SuggestionsContainer"
-								BorderThickness="1"
-								BorderBrush="{DynamicResource BorderBrush}"
-								Background="{DynamicResource BackgroundBrush}"
-								CornerRadius="{DynamicResource OverlayCornerRadius}">
-							<ListBox Name="PART_SelectingItemsControl"
-									 BorderThickness="0"
-									 Background="Transparent"
-									 ItemTemplate="{TemplateBinding ItemTemplate}"/>
-						</Border>
+						<ListBox Name="PART_SelectingItemsControl"
+								 Padding="2"
+								 BorderThickness="0"
+								 Background="Transparent"
+								 ItemTemplate="{TemplateBinding ItemTemplate}"/>
 					</Popup>
 				</Grid>
 			</ControlTemplate>

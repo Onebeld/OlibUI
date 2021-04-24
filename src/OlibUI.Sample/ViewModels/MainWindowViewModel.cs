@@ -25,6 +25,7 @@ namespace OlibUI.Sample.ViewModels
         private bool _openedPopup;
         private bool _compactMode;
         private bool _showFullscreenButton;
+        private bool _enableBlur;
 
         private ObservableCollection<Theme> _customThemes = new ObservableCollection<Theme>();
 
@@ -113,6 +114,12 @@ namespace OlibUI.Sample.ViewModels
             set => RaiseAndSetIfChanged(ref _showFullscreenButton, value);
         }
 
+        private bool EnableBlur
+        {
+            get => _enableBlur;
+            set => RaiseAndSetIfChanged(ref _enableBlur, value);
+        }
+
         #endregion
 
         public MainWindowViewModel()
@@ -129,6 +136,7 @@ namespace OlibUI.Sample.ViewModels
         {
             CompactMode = Program.Settings.CompactMode;
             ShowFullscreenButton = Program.Settings.ShowFullscreenButton;
+            EnableBlur = Program.Settings.EnableBlur;
 
             LoadThemes();
 
@@ -187,6 +195,7 @@ namespace OlibUI.Sample.ViewModels
 
             Program.Settings.CompactMode = CompactMode;
             Program.Settings.ShowFullscreenButton = ShowFullscreenButton;
+            Program.Settings.EnableBlur = EnableBlur;
 
             FileSettings.SaveSettings();
         }

@@ -25,10 +25,7 @@
 		<AvaloniaResource Include="Controls\**" />
 		<AvaloniaResource Include="Instruments\**" />
 		<AvaloniaResource Include="Windows\OlibWindow.axaml" />
-		<AvaloniaResource Include="Local\**" />
-		<AvaloniaXaml Remove="Controls\SplitView.axaml" />
-		<AvaloniaXaml Remove="Instruments\NavigationView\NavigationView.axaml" />
-		<AvaloniaXaml Remove="Instruments\NavigationView\NavigationViewItem.axaml" />
+		<AvaloniaResource Include="Assets\Local\**" />
 		<AvaloniaResource Include="OlibUI.axaml" />
 	</ItemGroup>
 	<ItemGroup>

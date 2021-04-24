@@ -2,12 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:OlibUI.Sample"
              x:Class="OlibUI.Sample.App">
-
     <Application.Styles>
 		<StyleInclude Source="avares://OlibUI/OlibUI.axaml"/>
 
 		<StyleInclude Source="avares://OlibUI/Themes/Dazzling.axaml"/>
 		
-		<StyleInclude Source="avares://OlibUI/Local/Lang.en.axaml"/>
+		<StyleInclude Source="avares://OlibUI/Assets/Local/Lang.en.axaml"/>
     </Application.Styles>
 </Application>

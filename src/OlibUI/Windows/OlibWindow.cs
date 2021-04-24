@@ -44,6 +44,8 @@ namespace OlibUI.Windows
             AvaloniaProperty.Register<OlibWindow, bool>(nameof(CompactMode));
         public static readonly RoutedEvent<RoutedEventArgs> InteractingWithWindowEvent =
             RoutedEvent.Register<OlibWindow, RoutedEventArgs>(nameof(InteractingWithWindow), RoutingStrategies.Bubble);
+        public static readonly StyledProperty<bool> EnableBlurProperty =
+            AvaloniaProperty.Register<OlibWindow, bool>(nameof(EnableBlur), true);
 
         /// <summary>
         /// Shows or hides the Expand and Collapse buttons
@@ -97,6 +99,12 @@ namespace OlibUI.Windows
         {
             get => GetValue(CompactModeProperty);
             set => SetValue(CompactModeProperty, value);
+        }
+
+        public bool EnableBlur
+        {
+            get => GetValue(EnableBlurProperty);
+            set => SetValue(EnableBlurProperty, value);
         }
 
         /// <summary>
