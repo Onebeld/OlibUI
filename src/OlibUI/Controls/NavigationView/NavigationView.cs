@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace OlibUI.Instruments.NavigationView
+namespace OlibUI.Controls
 {
     [PseudoClasses(":normal")]
     public partial class NavigationView : TreeView, IItemsPresenterHost, IContentPresenterHost, IHeadered
@@ -21,16 +21,11 @@ namespace OlibUI.Instruments.NavigationView
         public readonly static StyledProperty<object> HeaderProperty =
             AvaloniaProperty.Register<NavigationView, object>(nameof(Header), "Header");
         public readonly static StyledProperty<Geometry> IconProperty =
-            AvaloniaProperty.Register<NavigationView, Geometry>(
-                nameof(Icon));
+            AvaloniaProperty.Register<NavigationView, Geometry>(nameof(Icon));
         public readonly static DirectProperty<NavigationView, object> TitleProperty =
-            AvaloniaProperty.RegisterDirect<NavigationView, object>(
-                nameof(Title),
-                o => o.Title);
+            AvaloniaProperty.RegisterDirect<NavigationView, object>(nameof(Title), o => o.Title);
         public readonly static DirectProperty<NavigationView, object> SelectedContentProperty =
-            AvaloniaProperty.RegisterDirect<NavigationView, object>(
-                nameof(SelectedContent),
-                o => o.SelectedContent);
+            AvaloniaProperty.RegisterDirect<NavigationView, object>(nameof(SelectedContent), o => o.SelectedContent);
         public readonly static StyledProperty<double> CompactPaneLengthProperty =
             AvaloniaProperty.Register<NavigationView, double>(nameof(CompactPaneLength), 50);
         public readonly static StyledProperty<double> OpenPaneLengthProperty =
@@ -50,7 +45,7 @@ namespace OlibUI.Instruments.NavigationView
 
         private object _title;
         private object _selectedcontent;
-        private IEnumerable<string> _itemsasstrings;
+        private IEnumerable<string> _itemsAsStrings;
         private NavigationViewItemBase _headerItem;
         private AutoCompleteBox _completeBox;
 
@@ -131,8 +126,8 @@ namespace OlibUI.Instruments.NavigationView
 
         public IEnumerable<string> ItemsAsStrings
         {
-            get => _itemsasstrings;
-            private set => SetAndRaise(ItemsAsStringsProperty, ref _itemsasstrings, value);
+            get => _itemsAsStrings;
+            private set => SetAndRaise(ItemsAsStringsProperty, ref _itemsAsStrings, value);
         }
 
         static NavigationView()
@@ -160,7 +155,7 @@ namespace OlibUI.Instruments.NavigationView
             AvaloniaList<string> l = new AvaloniaList<string>();
             IEnumerable<NavigationViewItem> items = this.GetLogicalDescendants().OfType<NavigationViewItem>();
 
-            foreach (NavigationViewItem item in items) 
+            foreach (NavigationViewItem item in items)
                 if (item.Header != null) l.Add(item.Header.ToString());
 
             ItemsAsStrings = l;

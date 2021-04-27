@@ -7,5 +7,6 @@
         public bool ShowFullscreenButton { get; set; }
 
         public bool EnableBlur { get; set; } = true;
+        public bool EnableMovablePopup { get; set; } = true;
     }
 }

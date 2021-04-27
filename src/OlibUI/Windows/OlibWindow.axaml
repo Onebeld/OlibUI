@@ -8,7 +8,7 @@
 			<ControlTemplate>
 				<Border x:Name="PART_OuterBorder">
 					<Grid RowDefinitions="*,Auto">
-						<Panel x:Name="PART_BackBlur" Background="Black">
+						<Panel x:Name="PART_BackBlur" Background="Black" Grid.RowSpan="2">
 							<Panel.Transitions>
 								<Transitions>
 									<DoubleTransition Property="Opacity" Duration="0:0:0.05" />
@@ -25,7 +25,7 @@
 							</Border>
 						</Border>
 
-						<OlibTitleBar ZIndex="10" x:Name="PART_TitleBar" VerticalAlignment="Top" Height="30"/>
+						<OlibTitleBar ZIndex="10" x:Name="PART_TitleBar" VerticalAlignment="Top"/>
 
 						<ContentPresenter x:Name="PART_ContentWindow" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}"/>
 
@@ -61,7 +61,8 @@
 	<Style Selector="OlibWindow[IsActive=False] /template/ Border#PART_OuterBorder">
 		<Setter Property="BorderBrush" Value="{DynamicResource NotActiveWindowBorderBrush}"/>
 	</Style>
-	
+
+	<!-- Enable blur -->
 	<Style Selector="OlibWindow[EnableBlur=True] /template/ Panel#PART_BackBlur">
 		<Setter Property="Opacity" Value="0"/>
 	</Style>
@@ -70,5 +71,22 @@
 	</Style>
 	<Style Selector="OlibWindow[EnableBlur=True][IsActive=False] /template/ Panel#PART_BackBlur">
 		<Setter Property="Opacity" Value="1"/>
+	</Style>
+
+	<!-- Compact mode -->
+	<Style Selector="OlibWindow /template/ OlibTitleBar">
+		<Setter Property="Height" Value="30"/>
+	</Style>
+	<Style Selector="OlibWindow[CompactMode=True] /template/ OlibTitleBar">
+		<Setter Property="Height" Value="23"/>
+	</Style>
+	<Style Selector="OlibWindow /template/ ContentPresenter#PART_ContentWindow">
+		<Setter Property="Margin" Value="0 30 0 0"/>
+	</Style>
+	<Style Selector="OlibWindow[CompactMode=True] /template/ ContentPresenter#PART_ContentWindow">
+		<Setter Property="Margin" Value="0 23 0 0"/>
+	</Style>
+	<Style Selector="OlibWindow[CompactMode=True][WindowState=FullScreen] /template/ ContentPresenter#PART_ContentWindow">
+		<Setter Property="Margin" Value="0"/>
 	</Style>
 </Styles>

@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
 using Avalonia.Styling;
-using OlibUI.Instruments;
+using OlibUI.Controls;
 using OlibUI.Structures;
 using OlibUI.Windows;
 using System;
@@ -26,6 +26,7 @@ namespace OlibUI.Sample.ViewModels
         private bool _compactMode;
         private bool _showFullscreenButton;
         private bool _enableBlur;
+        private bool _enableMovablePopup;
 
         private ObservableCollection<Theme> _customThemes = new ObservableCollection<Theme>();
 
@@ -40,8 +41,7 @@ namespace OlibUI.Sample.ViewModels
             {
                 RaiseAndSetIfChanged(ref _theme, value);
 
-                if (value == -1)
-                    return;
+                if (value == -1) return;
 
                 CustomTheme = null;
 
@@ -84,8 +84,7 @@ namespace OlibUI.Sample.ViewModels
             {
                 RaiseAndSetIfChanged(ref _customTheme, value);
 
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 Theme = -1;
 
@@ -120,6 +119,12 @@ namespace OlibUI.Sample.ViewModels
             set => RaiseAndSetIfChanged(ref _enableBlur, value);
         }
 
+        public bool EnableMovablePopup
+        {
+            get => _enableMovablePopup;
+            set => RaiseAndSetIfChanged(ref _enableMovablePopup, value);
+        }
+
         #endregion
 
         public MainWindowViewModel()
@@ -137,6 +142,7 @@ namespace OlibUI.Sample.ViewModels
             CompactMode = Program.Settings.CompactMode;
             ShowFullscreenButton = Program.Settings.ShowFullscreenButton;
             EnableBlur = Program.Settings.EnableBlur;
+            EnableMovablePopup = Program.Settings.EnableMovablePopup;
 
             LoadThemes();
 
@@ -196,6 +202,7 @@ namespace OlibUI.Sample.ViewModels
             Program.Settings.CompactMode = CompactMode;
             Program.Settings.ShowFullscreenButton = ShowFullscreenButton;
             Program.Settings.EnableBlur = EnableBlur;
+            Program.Settings.EnableMovablePopup = EnableMovablePopup;
 
             FileSettings.SaveSettings();
         }
@@ -314,7 +321,7 @@ namespace OlibUI.Sample.ViewModels
     
         private void ShowMessageBox()
         {
-            MessageBox.Show(Program.MainWindow, "MessageBox", "I am MessageBox!", new List<MessageBoxButton>
+            MessageBox.Show(Program.MainWindow, "MessageBox", "I am a MessageBox!", new List<MessageBoxButton>
             {
                 new MessageBoxButton
                 {

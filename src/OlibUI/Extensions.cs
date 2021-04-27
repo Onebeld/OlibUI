@@ -1,7 +1,5 @@
 ﻿using System.Linq;
 using System.Text;
-using Avalonia;
-using Avalonia.Controls.Primitives;
 using Avalonia.LogicalTree;
 using Avalonia.Media;
 using Avalonia.VisualTree;
@@ -42,9 +40,6 @@ namespace OlibUI
 
         public static T GetParentTOfLogical<T>(this ILogical logical) where T : class => logical.GetSelfAndLogicalAncestors().OfType<T>().FirstOrDefault<T>();
 
-        public static T GetParentTOfVisual<T>(this IVisual visual) where T : class
-        {
-            return visual.GetSelfAndVisualAncestors().OfType<T>().FirstOrDefault<T>();
-        }
+        public static T GetParentTOfVisual<T>(this IVisual visual) where T : class => visual.GetSelfAndVisualAncestors().OfType<T>().FirstOrDefault<T>();
     }
 }

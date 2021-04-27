@@ -38,7 +38,9 @@ namespace OlibUI.Windows
             MessageBox msgbox = new MessageBox
             {
                 Title = title,
-                Icon = parent?.Icon
+                Icon = parent?.Icon,
+                CompactMode = ((OlibWindow)parent)?.CompactMode ?? false,
+                EnableBlur = ((OlibWindow)parent)?.EnableBlur ?? true,
             };
             msgbox.FindControl<TextBlock>("Text").Text = text;
             StackPanel buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
@@ -56,8 +58,7 @@ namespace OlibUI.Windows
                     msgbox.Close();
                 };
                 buttonPanel.Children.Add(btn);
-                if (r.Def)
-                    res = r.Result;
+                if (r.Def) res = r.Result;
             }
 
             void ChangeIcon(string icn) => iconControl.Data = (Geometry)Application.Current.FindResource($"{icn}Icon");

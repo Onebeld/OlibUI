@@ -27,16 +27,17 @@
 						   OpenPaneLength="{TemplateBinding OpenPaneLength}"
 						   DisplayMode="{TemplateBinding DisplayMode}">
 					<SplitView.Pane>
-						<Grid RowDefinitions="Auto,Auto,Auto,*">
-							<NavigationViewItemBase Grid.Row="1" Name="PART_HeaderItem" Classes="header" Icon="{Binding $parent[NavigationView].Icon}" Header="{Binding $parent[NavigationView].Header}" />
-							<Border IsVisible="{Binding #split.IsPaneOpen}" Grid.Row="2" Padding="5">
+						<Grid RowDefinitions="Auto,Auto,*" Margin="0 3">
+							<NavigationViewItemBase Grid.Row="0" Name="PART_HeaderItem" Classes="header" Icon="{Binding $parent[NavigationView].Icon}" Header="{Binding $parent[NavigationView].Header}" Margin="3 0 4 0"/>
+							<Border IsVisible="{Binding #split.IsPaneOpen}" Grid.Row="1" Padding="5" Margin="0 5">
 								<AutoCompleteBox Name="PART_AutoCompleteBox" Watermark="{DynamicResource Search}" FilterMode="Contains"
 												 Items="{Binding $parent[NavigationView].ItemsAsStrings}"
 												 IsVisible="{Binding $parent[NavigationView].AutoCompleteBoxIsVisible}" />
 							</Border>
-							<DockPanel Grid.Row="3">
-								<ScrollViewer DockPanel.Dock="Top">
+							<DockPanel Grid.Row="2">
+								<ScrollViewer DockPanel.Dock="Top" HorizontalScrollBarVisibility="Disabled">
 									<ItemsPresenter Name="PART_ItemsPresenter"
+													Margin="3 0 4 0"
 													Items="{Binding $parent[NavigationView].Items}"
 													ItemTemplate="{Binding $parent[NavigationView].ItemTemplate}"
 													ItemsPanel="{Binding $parent[NavigationView].ItemsPanel}" />

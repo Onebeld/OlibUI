@@ -1,9 +1,7 @@
-<olib:OlibWindow xmlns="https://github.com/avaloniaui"
+<OlibWindow xmlns="https://github.com/avaloniaui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	             xmlns:olib="using:OlibUI.Windows"
-	             xmlns:inst="using:OlibUI.Instruments"
                  mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 				 Width="400" Height="260"
 				 WindowStartupLocation="CenterOwner"
@@ -12,12 +10,12 @@
                  Title="{DynamicResource ChooseColor}"
                  x:Class="OlibUI.Windows.WindowColorPicker"
 	             CanResize="False">
-	<inst:ColorPicker x:Name="ColorPicker"/>
+	<ColorPicker x:Name="ColorPicker"/>
 	
-	<olib:OlibWindow.BottomPanel>
+	<OlibWindow.BottomPanel>
 		<StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Right">
 			<Button Name="Cancel" Content="{DynamicResource Cancel}"/>
 			<Button Name="OK" Content="{DynamicResource OK}"/>
 		</StackPanel>
-	</olib:OlibWindow.BottomPanel>
-</olib:OlibWindow>
+	</OlibWindow.BottomPanel>
+</OlibWindow>

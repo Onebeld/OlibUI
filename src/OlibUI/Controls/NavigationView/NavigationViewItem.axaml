@@ -17,70 +17,10 @@
 		</Setter>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Grid RowDefinitions="5,*,5">
-					<Grid Grid.Row="1" ColumnDefinitions="Auto,*" Name="PART_Grid"  Background="{TemplateBinding Background}">
-						<Grid Grid.Column="1" ColumnDefinitions="Auto,12,Auto,10,*,5,Auto" RowDefinitions="5,Auto,5">
-							<Border Grid.Column="0" Grid.Row="1" Name="PART_SelectionBorder" Width="3" CornerRadius="5" />
-							<Path Grid.Column="2" Grid.Row="1" Name="PART_PathT" Data="{TemplateBinding Icon}" Fill="{DynamicResource ForegroundBrush}" Stretch="Uniform" Width="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-							<Border Grid.Column="4" Grid.Row="1" Name="PART_ContainerBorder">
-								<Border.Transitions>
-									<Transitions>
-										<DoubleTransition Property="Opacity" Duration="0:0:0.4" Easing="ExponentialEaseOut" />
-									</Transitions>
-								</Border.Transitions>
-								<ContentPresenter Name="PART_ContentPresenter"
-												  Content="{TemplateBinding Header}"
-												  TextBlock.FontSize="14"
-												  VerticalAlignment="Center" />
-							</Border>
-							<ToggleButton Grid.Column="6"
-										  Grid.Row="1"
-										  Margin="5"
-										  Height="20"
-										  Width="20"
-										  VerticalAlignment="Center"
-										  IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
-										  Background="Transparent">
-								<Path Name="PART_Path" Margin="0 0 1 0" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Width="13" Data="{StaticResource ArrowDownIcon}">
-									<Path.Transitions>
-										<Transitions>
-											<DoubleTransition Property="RotateTransform.Angle" Duration="0:0:1" />
-										</Transitions>
-									</Path.Transitions>
-								</Path>
-							</ToggleButton>
-						</Grid>
-					</Grid>
-				</Grid>
-			</ControlTemplate>
-		</Setter>
-		<Setter Property="Transitions">
-			<Transitions>
-				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
-			</Transitions>
-		</Setter>
-	</Style>
-
-	<Style Selector=":is(NavigationViewItem)">
-		<Setter Property="Padding" Value="0 5" />
-		<Setter Property="MinWidth" Value="0" />
-		<Setter Property="DockPanel.Dock" Value="Top" />
-		<Setter Property="VerticalAlignment" Value="Top" />
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="ItemsPanel">
-			<ItemsPanelTemplate>
-				<StackPanel Orientation="Vertical" />
-			</ItemsPanelTemplate>
-		</Setter>
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Grid RowDefinitions="*,Auto">
-					<Grid Grid.Row="0" ColumnDefinitions="Auto,*" Name="PART_Grid" Background="{TemplateBinding Background}">
-						<Grid Grid.Column="1"
-							  ColumnDefinitions="Auto,12,Auto,10,*,5,Auto"
-							  RowDefinitions="5,Auto,5"
-							  Margin="{TemplateBinding Level, Mode=OneWay, Converter={StaticResource LevelConv}}">
-							<Border Grid.Column="0" Grid.Row="1" Name="PART_SelectionBorder" Width="3" CornerRadius="5" />
+				<Border Name="PART_BackgroundBorder" CornerRadius="3" Background="{TemplateBinding Background}">
+					<Grid ColumnDefinitions="Auto,*" Name="PART_Grid">
+						<Grid Grid.Column="1" ColumnDefinitions="Auto,10,Auto,15,*,5,Auto" RowDefinitions="5,Auto,5">
+							<Border Grid.Column="0" Grid.Row="1" Name="PART_SelectionBorder" Width="3.5" CornerRadius="5" />
 							<Path Grid.Column="2" Grid.Row="1" Name="PART_PathT" Data="{TemplateBinding Icon}" Fill="{DynamicResource ForegroundBrush}" Stretch="Uniform" Width="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 							<Border Grid.Column="4" Grid.Row="1" Name="PART_ContainerBorder">
 								<Border.Transitions>
@@ -111,12 +51,74 @@
 							</ToggleButton>
 						</Grid>
 					</Grid>
-					<Border Grid.Row="1" Grid.Column="1" Name="PART_BottomBorder">
-						<ItemsPresenter Name="PART_ItemsPresenter"
-										Items="{TemplateBinding Items}"
-										ItemsPanel="{TemplateBinding ItemsPanel}" />
-					</Border>
-				</Grid>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector=":is(NavigationViewItem)">
+		<Setter Property="Padding" Value="0 5" />
+		<Setter Property="MinWidth" Value="0" />
+		<Setter Property="DockPanel.Dock" Value="Top" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="ItemsPanel">
+			<ItemsPanelTemplate>
+				<StackPanel Orientation="Vertical" />
+			</ItemsPanelTemplate>
+		</Setter>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_BackgroundBorder" CornerRadius="3" Background="{TemplateBinding Background}">
+					<Grid RowDefinitions="*,Auto">
+						<Grid Grid.Row="0" ColumnDefinitions="Auto,*" Name="PART_Grid">
+							<Grid Grid.Column="1"
+								  ColumnDefinitions="Auto,10,Auto,15,*,5,Auto"
+								  RowDefinitions="5,Auto,5"
+								  Margin="{TemplateBinding Level, Mode=OneWay, Converter={StaticResource LevelConv}}">
+								<Border Grid.Column="0" Grid.Row="1" Name="PART_SelectionBorder" Width="4" CornerRadius="5" />
+								<Path Grid.Column="2" Grid.Row="1" Name="PART_PathT" Data="{TemplateBinding Icon}" Fill="{DynamicResource ForegroundBrush}" Stretch="Uniform" Width="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+								<Border Grid.Column="4" Grid.Row="1" Name="PART_ContainerBorder">
+									<Border.Transitions>
+										<Transitions>
+											<DoubleTransition Property="Opacity" Duration="00:00:00.2" Easing="0.1,0.9,0.2,1.0" />
+										</Transitions>
+									</Border.Transitions>
+									<ContentPresenter Name="PART_ContentPresenter"
+													  Content="{TemplateBinding Header}"
+													  TextBlock.FontSize="14"
+													  VerticalAlignment="Center" />
+								</Border>
+								<ToggleButton Grid.Column="6"
+											  Grid.Row="1"
+											  Margin="5"
+											  Height="20"
+											  Width="20"
+											  VerticalAlignment="Center"
+											  IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
+											  Background="Transparent">
+									<Path Name="PART_Path" Margin="0 0 1 0" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Width="13" Data="{StaticResource ArrowDownIcon}">
+										<Path.Transitions>
+											<Transitions>
+												<DoubleTransition Property="RotateTransform.Angle" Duration="0:0:1" />
+											</Transitions>
+										</Path.Transitions>
+									</Path>
+								</ToggleButton>
+							</Grid>
+						</Grid>
+						<Border Grid.Row="1" Grid.Column="1" Name="PART_BottomBorder">
+							<ItemsPresenter Name="PART_ItemsPresenter"
+											Items="{TemplateBinding Items}"
+											ItemsPanel="{TemplateBinding ItemsPanel}" />
+						</Border>
+					</Grid>
+				</Border>
 			</ControlTemplate>
 		</Setter>
 		<Setter Property="Transitions">
@@ -132,7 +134,7 @@
 	<Style Selector="NavigationViewItemBase:pressed">
 		<Setter Property="RenderTransform" Value="scale(0.98)" />
 	</Style>
-	<Style Selector="NavigationViewItemBase /template/ Grid#PART_Grid:pointerover">
+	<Style Selector="NavigationViewItemBase /template/ Border#PART_BackgroundBorder:pointerover">
 		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}" />
 	</Style>
 
@@ -192,7 +194,7 @@
 		<Setter Property="Opacity" Value="0" />
 	</Style>
 
-	<Style Selector="NavigationViewItem /template/ Grid#PART_Grid:pointerover">
+	<Style Selector="NavigationViewItem /template/ Border#PART_BackgroundBorder:pointerover">
 		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}" />
 	</Style>
 

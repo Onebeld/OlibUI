@@ -84,6 +84,14 @@
 			</Transitions>
 		</Setter>
 	</Style>
+	<Style Selector="OlibWindow[CompactMode=True] /template/ OlibTitleBar:fullscreen /template/ Panel#PART_Container">
+		<Setter Property="RenderTransform" Value="translateY(-22px)" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:.25" />
+			</Transitions>
+		</Setter>
+	</Style>
 
 	<Style Selector="OlibTitleBar:fullscreen:pointerover /template/ Panel#PART_Container">
 		<Setter Property="RenderTransform" Value="none" />

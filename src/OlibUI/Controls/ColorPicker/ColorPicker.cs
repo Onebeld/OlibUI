@@ -12,7 +12,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace OlibUI.Instruments
+namespace OlibUI.Controls
 {
     public static class ColorHelpers
     {

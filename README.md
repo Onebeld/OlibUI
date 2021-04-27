@@ -10,20 +10,22 @@
 
 OlibUI - dynamic user interface for AvaloniaUI. The main advantages of this library are: runtime skinning and localization. At the moment, some controls are not supported, but you can already use it.
 
+Over the years I have been improving my design. This library was part of several of my programs. With the release of OlibUI 2.0, you can install and create applications with this design. The design was first used on OlibKey, a password manager. After stopping the development of this program, I wanted to keep the name, design and logo. Why not OlibUI 1.0? First of all, rethinking my concept to design and delivering it as a separate library.
+
 ## Installation
 Installation via command line:
 ```cmd
-dotnet add package OlibUI --version 2.0.0
+dotnet add package OlibUI --version 2.2.0
 ```
 
 Installation using a package manager:
 ```cmd
-Install-Package OlibUI -Version 2.0.0
+Install-Package OlibUI -Version 2.2.0
 ```
 
 Inserting into .csproj PackageReference:
 ```xml
-<PackageReference Include="OlibUI" Version="2.0.0" />
+<PackageReference Include="OlibUI" Version="2.2.0" />
 ```
 
 Installation with Visual Studio:
@@ -45,20 +47,19 @@ The library can work without a default theme. Therefore, we just connect OlibUI.
 
 OlibUI supports dynamic localization. If you will not be translating your application into other languages, add this line to App.axaml:
 ```xml
-<StyleInclude Source="avares://OlibUI/Local/Lang.en.axaml"/>
+<StyleInclude Source="avares://OlibUI/Assets/Local/Lang.en.axaml"/>
 ```
 
 After connecting, you can change the window to the one that comes with OlibUI:
 ```xml
-<olib:OlibWindow xmlns="https://github.com/avaloniaui"
+<OlibWindow xmlns="https://github.com/avaloniaui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:olib="using:OlibUI.Windows"
                  x:Class="YourApp.MainWindow"
                  WindowStartupLocation="CenterScreen"
                  TransparencyLevelHint="AcrylicBlur"
                  WindowButtons="All">
-</olib:OlibWindow>
+</OlibWindow>
 ```
 ```cs
 using Avalonia.Markup.Xaml;
@@ -99,5 +100,6 @@ These are examples of what your application might look like.
 ## Credits
 * [AvaloniaUI](https://github.com/AvaloniaUI/Avalonia)
 * [ColorPicker](https://github.com/wieslawsoltes/ThemeEditor) by wieslawsoltes
+* [NavigationView](https://github.com/PieroCastillo/Aura.UI) by PieroCastillo
 
 <img src=".github/images/OnebeldLogo.png" width="350" align="right"/>

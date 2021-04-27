@@ -107,6 +107,7 @@ namespace OlibUI.Windows
             set => SetValue(EnableBlurProperty, value);
         }
 
+
         /// <summary>
         /// Required if the logo is drawn in vector graphics
         /// </summary>
@@ -143,7 +144,7 @@ namespace OlibUI.Windows
             RoutedEventArgs e = new RoutedEventArgs(InteractingWithWindowEvent);
             RaiseEvent(e);
 
-            e.Handled = true;;
+            e.Handled = true;
         }
 
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
@@ -158,36 +159,9 @@ namespace OlibUI.Windows
 
             SizeToContent = content;
 
-            this.GetObservable(CompactModeProperty).Subscribe(x =>
-            {
-                e.NameScope.Get<OlibTitleBar>("PART_TitleBar").Height = x ? 23 : 30;
-                if (WindowState != WindowState.FullScreen)
-                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = x ? Thickness.Parse("0 23 0 0") : Thickness.Parse("0 30 0 0");
-                else e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = Thickness.Parse("0");
-            });
-            this.GetObservable(WindowStateProperty).Subscribe(x =>
-            {
-                if (x == WindowState.FullScreen)
-                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = Thickness.Parse("0");
-                else
-                    e.NameScope.Get<ContentPresenter>("PART_ContentWindow").Margin = CompactMode ? Thickness.Parse("0 23 0 0") : Thickness.Parse("0 30 0 0");
-
-                OnInteractingWithWindow();
-            });
-
             PositionChanged += (_, e1) => OnInteractingWithWindow();
 
-            try
-            {
-                KeyDown += (s, ep) =>
-                {
-                    if (ep.KeyModifiers == KeyModifiers.Control && ep.Key == Key.Q) Close();
-                };
-
-                if (BottomPanel == null)
-                    e.NameScope.Get<Border>("BottomBorder").IsVisible = false;
-            }
-            catch { }
+            if (BottomPanel == null) e.NameScope.Get<Border>("BottomBorder").IsVisible = false;
         }
     }
 }

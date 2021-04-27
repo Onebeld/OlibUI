@@ -24,49 +24,49 @@
 	<StyleInclude Source="/Assets/Images.axaml"/>
 	
 	<!-- Controls -->
-	<StyleInclude Source="/Controls/Button.axaml"/>
-	<StyleInclude Source="/Controls/Menu.axaml"/>
-	<StyleInclude Source="/Controls/PopupRoot.axaml"/>
-	<StyleInclude Source="/Controls/ContextMenu.axaml"/>
-	<StyleInclude Source="/Controls/ScrollViewer.axaml"/>
-	<StyleInclude Source="/Controls/ContentControl.axaml"/>
-	<StyleInclude Source="/Controls/ToolTip.axaml"/>
-	<StyleInclude Source="/Controls/ProgressBar.axaml"/>
-	<StyleInclude Source="/Controls/Separator.axaml"/>
-	<StyleInclude Source="/Controls/CheckBox.axaml"/>
-	<StyleInclude Source="/Controls/ComboBox.axaml"/>
-	<StyleInclude Source="/Controls/RepeatButton.axaml"/>
-	<StyleInclude Source="/Controls/ScrollBar.axaml"/>
-	<StyleInclude Source="/Controls/MenuItem.axaml"/>
-	<StyleInclude Source="/Controls/ComboBoxItem.axaml"/>
-	<StyleInclude Source="/Controls/ListBox.axaml"/>
-	<StyleInclude Source="/Controls/ListBoxItem.axaml"/>
-	<StyleInclude Source="/Controls/TextBox.axaml"/>
-	<StyleInclude Source="/Controls/ToggleButton.axaml"/>
-	<StyleInclude Source="/Controls/DataValidationErrors.axaml"/>
-	<StyleInclude Source="/Controls/TabControl.axaml"/>
-	<StyleInclude Source="/Controls/TabItem.axaml"/>
-	<StyleInclude Source="/Controls/UserControl.axaml"/>
-	<StyleInclude Source="/Controls/GridSplitter.axaml"/>
-	<StyleInclude Source="/Controls/ButtonSpinner.axaml"/>
-	<StyleInclude Source="/Controls/NumericUpDown.axaml"/>
-	<StyleInclude Source="/Controls/AutoCompleteBox.axaml"/>
-	<StyleInclude Source="/Controls/Slider.axaml"/>
-	<StyleInclude Source="/Controls/RadioButton.axaml"/>
-	<StyleInclude Source="/Controls/Carousel.axaml"/>
-	<StyleInclude Source="/Controls/ToggleSwitch.axaml"/>
-	<StyleInclude Source="/Controls/SplitView.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/Button.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/Menu.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/PopupRoot.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ContextMenu.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ScrollViewer.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ContentControl.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ToolTip.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ProgressBar.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/Separator.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/CheckBox.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ComboBox.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/RepeatButton.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ScrollBar.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/MenuItem.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ComboBoxItem.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ListBox.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ListBoxItem.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/TextBox.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ToggleButton.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/DataValidationErrors.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/TabControl.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/TabItem.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/UserControl.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/GridSplitter.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ButtonSpinner.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/NumericUpDown.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/AutoCompleteBox.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/Slider.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/RadioButton.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/Carousel.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/ToggleSwitch.axaml"/>
+	<StyleInclude Source="/Controls/Stylized/SplitView.axaml"/>
 	<StyleInclude Source="/Controls/Chrome/OlibCaptionButtons.axaml"/>
 	<StyleInclude Source="/Controls/Chrome/OlibTitleBar.axaml"/>
 	<!-- Controls -->
 	
 	<!-- Instruments -->
-	<StyleInclude Source="/Instruments/ColorPicker.axaml"/>
-	<StyleInclude Source="/Instruments/StatusBar.axaml"/>
-	<StyleInclude Source="/Instruments/StatusBarItem.axaml"/>
+	<StyleInclude Source="/Controls/ColorPicker/ColorPicker.axaml"/>
+	<StyleInclude Source="/Controls/StatusBar/StatusBar.axaml"/>
+	<StyleInclude Source="/Controls/StatusBar/StatusBarItem.axaml"/>
 	
-	<StyleInclude Source="/Instruments/NavigationView/NavigationView.axaml"/>
-	<StyleInclude Source="/Instruments/NavigationView/NavigationViewItem.axaml"/>
+	<StyleInclude Source="/Controls/NavigationView/NavigationView.axaml"/>
+	<StyleInclude Source="/Controls/NavigationView/NavigationViewItem.axaml"/>
 	<!-- Instruments -->
 
 	<Style Selector="Border.BorderStyle">

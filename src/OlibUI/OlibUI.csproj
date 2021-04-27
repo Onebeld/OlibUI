@@ -23,7 +23,6 @@
 		<AvaloniaResource Include="Assets\**" />
 		<AvaloniaResource Include="Themes\**" />
 		<AvaloniaResource Include="Controls\**" />
-		<AvaloniaResource Include="Instruments\**" />
 		<AvaloniaResource Include="Windows\OlibWindow.axaml" />
 		<AvaloniaResource Include="Assets\Local\**" />
 		<AvaloniaResource Include="OlibUI.axaml" />

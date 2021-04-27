@@ -26,6 +26,7 @@
 							Background="{TemplateBinding Background}"
 							BorderBrush="{TemplateBinding BorderBrush}"
 							Padding="5 4"
+							CornerRadius="3"
 							BorderThickness="{TemplateBinding BorderThickness}">
 						<Grid>
 							<Grid.ColumnDefinitions>
@@ -102,6 +103,7 @@
 				<Border Name="PART_LayoutRoot"
 						Background="{TemplateBinding Background}"
 						Padding="10 0"
+						CornerRadius="3"
 						BorderBrush="{TemplateBinding BorderBrush}"
 						BorderThickness="{TemplateBinding BorderThickness}">
 					<Panel>

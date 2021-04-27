@@ -1,11 +1,10 @@
 using Avalonia;
-using Avalonia.Animation;
-using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
-using Avalonia.Styling;
 using OlibUI.Sample.ViewModels;
 using OlibUI.Windows;
+using System.Linq;
 
 namespace OlibUI.Sample.Views
 {
@@ -14,7 +13,7 @@ namespace OlibUI.Sample.Views
         public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
-            Closing += (sender, args) => ((MainWindowViewModel) DataContext)?.Closing();
+            Closing += (sender, args) => ((MainWindowViewModel)DataContext)?.Closing();
 
             Activated += MainWindow_Activated;
 
@@ -23,12 +22,9 @@ namespace OlibUI.Sample.Views
 
         private void MainWindow_InteractingWithWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            Popup popup = this.FindControl<Popup>("PopupNot");
-
-            if (popup.IsOpen)
-            {
-                popup.Host.ConfigurePosition(popup.PlacementTarget, PlacementMode.AnchorAndGravity, new Point(popup.HorizontalOffset, popup.VerticalOffset), Avalonia.Controls.Primitives.PopupPositioning.PopupAnchor.TopLeft, Avalonia.Controls.Primitives.PopupPositioning.PopupGravity.Top);
-            }
+            if (((MainWindowViewModel)DataContext).EnableMovablePopup)
+                foreach (Popup p in this.GetLogicalDescendants().OfType<Popup>())
+                    if (p.IsOpen) p.Host.ConfigurePosition(p.PlacementTarget, p.PlacementMode, new Point(p.HorizontalOffset, p.VerticalOffset), p.PlacementAnchor, p.PlacementGravity);
         }
 
         private void MainWindow_Activated(object sender, System.EventArgs e)

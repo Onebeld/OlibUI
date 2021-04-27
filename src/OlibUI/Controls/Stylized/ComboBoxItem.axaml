@@ -5,9 +5,9 @@
 		<Setter Property="Background" Value="Transparent"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border Name="back">
-					<Grid ColumnDefinitions="5,*">
-						<Border Name="border" ZIndex="5"/>
+				<Border Name="BackgroundBorder" CornerRadius="3">
+					<Grid ColumnDefinitions="3,*">
+						<Border Name="border" ZIndex="5" CornerRadius="5"/>
 						<ContentPresenter Grid.Column="1" Name="PART_ContentPresenter"
 										Background="{TemplateBinding Background}"
 										BorderBrush="{TemplateBinding BorderBrush}"
@@ -29,10 +29,10 @@
 	<Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
 		<Setter Property="Background" Value="Transparent"/>
 	</Style>
-	<Style Selector="ComboBoxItem:pointerover /template/ Border#back">
+	<Style Selector="ComboBoxItem:pointerover /template/ Border#BackgroundBorder">
 		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
 	</Style>
-	<Style Selector="ComboBoxItem:selected /template/ Border#back">
+	<Style Selector="ComboBoxItem:selected /template/ Border#BackgroundBorder">
 		<Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
 	</Style>
 	<Style Selector="ComboBoxItem:selected /template/ Border#border">

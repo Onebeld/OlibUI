@@ -52,6 +52,7 @@
 							   StaysOpen="False">
 							<ScrollViewer>
 								<ItemsPresenter Name="PART_ItemsPresenter"
+												Margin="2"
 												Items="{TemplateBinding Items}"
 												ItemsPanel="{TemplateBinding ItemsPanel}"
 												ItemTemplate="{TemplateBinding ItemTemplate}"

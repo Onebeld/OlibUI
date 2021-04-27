@@ -2,7 +2,7 @@
 using Avalonia.Interactivity;
 using Avalonia.Input;
 
-namespace OlibUI.Instruments.NavigationView
+namespace OlibUI.Controls
 {
     public class NavigationViewItem : NavigationViewItemBase
     {

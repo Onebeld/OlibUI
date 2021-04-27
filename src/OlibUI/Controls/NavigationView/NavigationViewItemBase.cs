@@ -5,26 +5,17 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using System;
 
-namespace OlibUI.Instruments.NavigationView
+namespace OlibUI.Controls
 {
     [PseudoClasses(":opened", ":closed", ":selected")]
     public partial class NavigationViewItemBase : TreeViewItem, IHeadered
     {
         public static readonly DirectProperty<NavigationViewItemBase, object> ContentProperty =
-            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, object>(
-                nameof(Content),
-                o => o.Content,
-                (o, v) => o.Content = v);
+            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, object>(nameof(Content), o => o.Content, (o, v) => o.Content = v);
         public readonly static DirectProperty<NavigationViewItemBase, Geometry> IconProperty =
-            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, Geometry>(
-                nameof(Icon),
-                o => o.Icon,
-                (o, v) => o.Icon = v);
+            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, Geometry>(nameof(Icon), o => o.Icon, (o, v) => o.Icon = v);
         public static readonly DirectProperty<NavigationViewItemBase, object> TitleProperty =
-            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, object>(
-                nameof(Title),
-                o => o.Title,
-                (o, v) => o.Title = v);
+            AvaloniaProperty.RegisterDirect<NavigationViewItemBase, object>(nameof(Title), o => o.Title, (o, v) => o.Title = v);
         public static readonly StyledProperty<bool> IsOpenProperty =
             AvaloniaProperty.Register<NavigationView, bool>(nameof(IsOpen), true);
         public static readonly RoutedEvent<RoutedEventArgs> OpenedEvent =
@@ -114,13 +105,10 @@ namespace OlibUI.Instruments.NavigationView
         {
             NavigationViewItem sender = (NavigationViewItem)e.Sender;
 
-            if (sender != null && e.NewValue.HasValue)
+            if (sender != null && e.NewValue.HasValue && sender.IsSelected && sender.Parent is NavigationViewItem nw && nw.Parent is NavigationView nwp)
             {
-                if (sender.IsSelected && sender.Parent is NavigationViewItem nw && nw.Parent is NavigationView nwp)
-                {
-                    nwp.SelectSingleItem(nw);
-                    nw.IsExpanded = false;
-                }
+                nwp.SelectSingleItem(nw);
+                nw.IsExpanded = false;
             }
         }
 

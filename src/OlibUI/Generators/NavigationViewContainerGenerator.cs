@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Generators;
-using OlibUI.Instruments.NavigationView;
+using OlibUI.Controls;
 
 namespace OlibUI.Generators
 {

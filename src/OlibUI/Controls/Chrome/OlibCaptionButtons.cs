@@ -40,20 +40,17 @@ namespace OlibUI.Controls.Chrome
 
             _maximizeButton.Click += (_, e1) =>
             {
-                if (HostWindow != null)
-                    HostWindow.WindowState = HostWindow.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+                if (HostWindow != null) HostWindow.WindowState = HostWindow.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             };
 
             _minimizeButton.Click += (_, e1) =>
             {
-                if (HostWindow != null)
-                    HostWindow.WindowState = WindowState.Minimized;
+                if (HostWindow != null) HostWindow.WindowState = WindowState.Minimized;
             };
 
             _fullscreenButton.Click += (_, e1) =>
             {
-                if (HostWindow != null)
-                    HostWindow.WindowState = HostWindow.WindowState == WindowState.FullScreen ? WindowState.Normal : WindowState.FullScreen;
+                if (HostWindow != null) HostWindow.WindowState = HostWindow.WindowState == WindowState.FullScreen ? WindowState.Normal : WindowState.FullScreen;
             };
 
             if (_disposables == null)
@@ -81,8 +78,7 @@ namespace OlibUI.Controls.Chrome
                     }),
                     HostWindow.GetObservable(OlibWindow.FullScreenButtonProperty).Subscribe(x =>
                     {
-                        if (_fullscreenButton != null)
-                            _fullscreenButton.IsVisible = x;
+                        if (_fullscreenButton != null) _fullscreenButton.IsVisible = x;
                     })
                 };
             }

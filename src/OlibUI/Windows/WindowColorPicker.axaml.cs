@@ -1,7 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using OlibUI.Instruments;
+using OlibUI.Controls;
 using System.Threading.Tasks;
 using Avalonia.Input;
 
@@ -19,13 +18,18 @@ namespace OlibUI.Windows
         /// <returns>Result after pressing the button</returns>
         public static Task<string> SelectColor(Window parent, string defaultColor = null)
         {
-            WindowColorPicker windowColorPicker = new WindowColorPicker { Icon = parent?.Icon };
+            WindowColorPicker windowColorPicker = new WindowColorPicker 
+            { 
+                Icon = parent?.Icon,
+                CompactMode = ((OlibWindow)parent)?.CompactMode ?? false,
+                EnableBlur = ((OlibWindow)parent)?.EnableBlur ?? true,
+            };
 
             ColorPicker picker = windowColorPicker.FindControl<ColorPicker>("ColorPicker");
 
             bool cancel = true;
 
-            string res = defaultColor != null ? defaultColor : "#FFFFFFFF";
+            string res = defaultColor ?? "#FFFFFFFF";
 
             picker.Color = ColorHelpers.FromHexColor(res);
             picker.ChangeColor += (s,e) =>

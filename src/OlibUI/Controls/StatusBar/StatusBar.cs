@@ -3,7 +3,7 @@ using Avalonia.Controls.Generators;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
 
-namespace OlibUI.Instruments                                    
+namespace OlibUI.Controls                                  
 {
     /// <summary>
     /// An <see cref="ItemsControl"/> in which individual items can be selected.
@@ -23,9 +23,6 @@ namespace OlibUI.Instruments
             base.OnPointerPressed(e);
         }
 
-        protected override IItemContainerGenerator CreateItemContainerGenerator()
-        {
-            return new ItemContainerGenerator<StatusBarItem>(this, StatusBarItem.ContentProperty, StatusBarItem.ContentTemplateProperty);
-        }
+        protected override IItemContainerGenerator CreateItemContainerGenerator() => new ItemContainerGenerator<StatusBarItem>(this, StatusBarItem.ContentProperty, StatusBarItem.ContentTemplateProperty);
     }
 }

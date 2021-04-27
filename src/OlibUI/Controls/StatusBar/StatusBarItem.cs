@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace OlibUI.Instruments
+namespace OlibUI.Controls
 {
     /// <summary>
     /// An item in a <see cref="StatusBar"/>.
