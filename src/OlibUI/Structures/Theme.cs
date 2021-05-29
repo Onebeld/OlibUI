@@ -31,55 +31,55 @@ namespace OlibUI.Structures
         }
         
         [DataMember]
-        public Color BackgroundColor 
+        public Color BackgroundColor
         {
             get => _backgroundColor;
             set => RaiseAndSetIfChanged(ref _backgroundColor, value);
         }
         [DataMember]
-        public Color HoverBackgroundColor 
+        public Color HoverBackgroundColor
         {
             get => _hoverBackgroundColor;
             set => RaiseAndSetIfChanged(ref _hoverBackgroundColor, value);
         }
         [DataMember]
-        public Color ForegroundColor 
+        public Color ForegroundColor
         {
             get => _foregroundColor;
             set => RaiseAndSetIfChanged(ref _foregroundColor, value);
         }
         [DataMember]
-        public Color ForegroundOpacityColor 
+        public Color ForegroundOpacityColor
         {
             get => _foregroundOpacityColor;
             set => RaiseAndSetIfChanged(ref _foregroundOpacityColor, value);
         }
         [DataMember]
-        public Color PressedForegroundColor 
+        public Color PressedForegroundColor
         {
             get => _pressedForegroundColor;
             set => RaiseAndSetIfChanged(ref _pressedForegroundColor, value);
         }
         [DataMember]
-        public Color AccentColor 
+        public Color AccentColor
         {
             get => _accentColor;
             set => RaiseAndSetIfChanged(ref _accentColor, value);
         }
         [DataMember]
-        public Color BorderBackgroundColor 
+        public Color BorderBackgroundColor
         {
             get => _borderBackgroundColor;
             set => RaiseAndSetIfChanged(ref _borderBackgroundColor, value);
         }
         [DataMember]
-        public Color BorderColor 
+        public Color BorderColor
         {
             get => _borderColor;
             set => RaiseAndSetIfChanged(ref _borderColor, value);
         }
         [DataMember]
-        public Color WindowBorderColor 
+        public Color WindowBorderColor
         {
             get => _windowBorderColor;
             set => RaiseAndSetIfChanged(ref _windowBorderColor, value);
@@ -91,19 +91,19 @@ namespace OlibUI.Structures
             set => RaiseAndSetIfChanged(ref _notActiveWindowBorderColor, value);
         }
         [DataMember]
-        public Color HoverScrollBoxColor 
+        public Color HoverScrollBoxColor
         {
             get => _hoverScrollBoxColor;
             set => RaiseAndSetIfChanged(ref _hoverScrollBoxColor, value);
         }
         [DataMember]
-        public Color ScrollBoxColor 
+        public Color ScrollBoxColor
         {
             get => _scrollBoxColor;
             set => RaiseAndSetIfChanged(ref _scrollBoxColor, value);
         }
         [DataMember]
-        public Color ErrorColor 
+        public Color ErrorColor
         {
             get => _errorColor;
             set => RaiseAndSetIfChanged(ref _errorColor, value);

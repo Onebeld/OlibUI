@@ -8,13 +8,13 @@ using OlibUI.Controls;
 using OlibUI.Structures;
 using OlibUI.Windows;
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using Newtonsoft.Json;
 using OlibUI.Sample.Views.Windows;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Avalonia.Collections;
 
 namespace OlibUI.Sample.ViewModels
 {
@@ -28,7 +28,7 @@ namespace OlibUI.Sample.ViewModels
         private bool _enableBlur;
         private bool _enableMovablePopup;
 
-        private ObservableCollection<Theme> _customThemes = new ObservableCollection<Theme>();
+        private AvaloniaList<Theme> _customThemes = new AvaloniaList<Theme>();
 
         private Theme _customTheme;
 
@@ -72,7 +72,7 @@ namespace OlibUI.Sample.ViewModels
         }
 
         [DataMember]
-        private ObservableCollection<Theme> CustomThemes
+        private AvaloniaList<Theme> CustomThemes
         {
             get => _customThemes;
             set => RaiseAndSetIfChanged(ref _customThemes, value);
@@ -327,7 +327,7 @@ namespace OlibUI.Sample.ViewModels
                 {
                     Text = "OK", Result = "OK", IsKeyDown = true
                 }
-            }, MessageBox.MessageBoxIcon.Information);
+            }, MessageBox.MessageBoxIcon.Information, "sdafdsfdsdfadsf");
         }
     }
 }

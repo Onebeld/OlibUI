@@ -33,7 +33,7 @@ namespace OlibUI.Windows
         /// <param name="icon">Message box icon</param>
         /// <param name="textException">Adding additional information</param>
         /// <returns>Result after pressing the button</returns>
-        public static Task<string> Show(Window parent, string title, string text, IList<MessageBoxButton> buttons, MessageBoxIcon icon = MessageBoxIcon.None, string textException = null)
+        public static Task<string> Show(Window parent, string title, string text, IList<MessageBoxButton> buttons, MessageBoxIcon icon = MessageBoxIcon.None, string textException = null, double maxWidth = 450, double maxHeight = 200)
         {
             MessageBox msgbox = new MessageBox
             {
@@ -41,11 +41,16 @@ namespace OlibUI.Windows
                 Icon = parent?.Icon,
                 CompactMode = ((OlibWindow)parent)?.CompactMode ?? false,
                 EnableBlur = ((OlibWindow)parent)?.EnableBlur ?? true,
+                MaxHeight = maxHeight,
+                MaxWidth = maxWidth
             };
             msgbox.FindControl<TextBlock>("Text").Text = text;
             StackPanel buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
             Path iconControl = msgbox.FindControl<Path>("Icon");
             TextBox errorText = msgbox.FindControl<TextBox>("ErrorText");
+
+            errorText.MaxHeight = maxHeight - 130;
+            errorText.MaxWidth = maxWidth - 5;
 
             string res = "OK";
 

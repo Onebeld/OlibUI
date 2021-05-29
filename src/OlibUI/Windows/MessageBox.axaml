@@ -11,14 +11,14 @@
 				 ShowInTaskbar="False"
 				 x:Class="OlibUI.Windows.MessageBox"
 				 SizeToContent="WidthAndHeight" CanResize="False">
-	<Grid Name="ContentC" RowDefinitions="*,Auto">
+	<Grid Name="ContentC" RowDefinitions="*,*">
 		<Grid Name="Content" ColumnDefinitions="70,*">
 			<Path Name="Icon" Fill="{StaticResource ForegroundBrush}" VerticalAlignment="Center" Stretch="Uniform" Width="40" Margin="10"/>
 			<ScrollViewer Grid.Column="1">
 				<TextBlock VerticalAlignment="Center" Name="Text" TextWrapping="Wrap" Margin="0 0 10 0" Width="250"/>
 			</ScrollViewer>
 		</Grid>
-		<TextBox Name="ErrorText" Height="100" MaxWidth="450" Grid.Row="1" Margin="10" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
+		<TextBox Name="ErrorText" MinHeight="50" Grid.Row="1" Margin="10" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
 	</Grid>
 	<OlibWindow.BottomPanel>
 		<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Name="Buttons" Spacing="5"/>
