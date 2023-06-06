@@ -3,6 +3,8 @@
 ![Nuget](https://img.shields.io/nuget/dt/OlibUI?style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Onebeld/OlibUI?style=flat-square)
 
+# This project is very outdated. Consider using [PleasantUI](https://github.com/Onebeld/PleasantUI).
+
 <h1 align="center">
   <img src=".github/images/OlibUILogo.png"/>
   OlibUI
